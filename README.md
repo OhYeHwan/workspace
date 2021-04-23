@@ -6,6 +6,10 @@
 
   1. yarn create react-app [file]
 
+- Material UI
+
+  1. yarn add @material-ui/core
+
 - Mobx , mobx-react
 
   1. yarn add mobx mobx-react
