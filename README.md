@@ -4,19 +4,19 @@
 
 - react
 
-1. yarn create react-app [file]
+  1. yarn create react-app [file]
 
 - Mobx , mobx-react
 
-1. yarn add mobx mobx-react
+  1. yarn add mobx mobx-react
 
 - Decorator
 
-1. yarn add @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators
+  1. yarn add @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators
 
-2. yarn eject : 에러발생시 커밋실행
+  2. yarn eject : 에러발생시 커밋실행
 
-3. package.json babel 코드 수정
+  3. package.json babel 코드 수정
 
 ```
 "babel": {
