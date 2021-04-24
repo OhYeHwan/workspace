@@ -15,6 +15,7 @@
   1. yarn add mobx mobx-react
 
 - Decorator
+  데코레이터 사용 시 빨간줄 없애기 : Setting - experimental Decorators 체크
 
   1. yarn add @babel/plugin-proposal-class-properties @babel/plugin-proposal-decorators
 
