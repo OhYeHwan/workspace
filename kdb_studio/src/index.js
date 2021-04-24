@@ -4,11 +4,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'mobx-react';
 
+import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.render(
-  <Provider>
+  <BrowserRouter>
     <App />
-  </Provider>,
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
