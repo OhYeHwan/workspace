@@ -5,7 +5,6 @@ import Paper from '@material-ui/core/Paper';
 import { withStyles } from "@material-ui/core/styles"
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import AddBoxIcon from '@material-ui/icons/AddBox';
-import { Typography } from '@material-ui/core';
 
 const styles = {
     root: {
