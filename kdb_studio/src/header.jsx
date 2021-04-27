@@ -5,12 +5,12 @@ import Account from "./account";
 
 const styles = {
     header: {
-        backgroundColor: "#400CCC",
+        backgroundColor: "pink",
     },
     logo: {
         fontFamily: "Work Sans, sans-serif",
-        fontWeight: 600,
-        color: "#FFFEFE",
+        fontWeight: 800,
+        color: "black",
         textAlign: "left",
         margin: "30px",
     },
@@ -31,7 +31,7 @@ class Header extends Component {
         );
         return (
             <header>
-                <AppBar className={this.props.classes.header}>
+                <AppBar position="fixed" className={this.props.classes.header}>
                     <Toolbar className={this.props.classes.toolbar}>
                         {Logo}
                         <Account/>

@@ -1,31 +1,58 @@
 import React, { Component } from 'react';
-import MenuList from '@material-ui/core/MenuList';
-import MenuItem from '@material-ui/core/MenuItem';
-import Paper from '@material-ui/core/Paper';
-import { withStyles } from "@material-ui/core/styles"
-import ListItemIcon from '@material-ui/core/ListItemIcon';
+import { withStyles, createMuiTheme } from "@material-ui/core/styles"
 import AddBoxIcon from '@material-ui/icons/AddBox';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import { Divider, Drawer, List, ListItem, Toolbar } from '@material-ui/core';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+
+const theme = createMuiTheme();
 
 const styles = {
     root: {
-        width: 100,
-        height: "100%",
-    }
+        display: 'flex',
+        zIndex: theme.zIndex.drawer - 100,
+    },
+    drawer: {
+        width: 60,
+    },
+    drawerPaper: {
+        width: 60,
+        overflow: 'hidden',
+    },
 }
-
 
 class Sidebar extends Component {
     render() {
         return (
-            <Paper className={this.props.classes.root}>
-                <MenuList>
-                    <MenuItem>
-                        <ListItemIcon>
-                            <AddBoxIcon fontSize="large" />
-                        </ListItemIcon>
-                    </MenuItem>
-                </MenuList>
-           </Paper>
+            <div className={this.props.classes.root}>
+                <Drawer
+                    variant="permanent"
+                    className={this.props.classes.drawer}
+                    classes={{
+                        paper: this.props.classes.drawerPaper,
+                    }}
+                >
+                <Toolbar />
+                <div>
+                    <List>
+                        {['Add', 'Inbox'].map((text, index) => (
+                            <ListItem button key={text}>
+                                <ListItemIcon>{index % 2 === 0 ? <AddBoxIcon /> : <InboxIcon />}</ListItemIcon>
+                            </ListItem>
+                        ))}
+                    </List>
+                    <Divider />
+                    <List>
+                        {['Add', 'Inbox'].map((text, index) => (
+                            <ListItem button key={text}>
+                                <ListItemIcon>{index % 2 === 0 ? <AddBoxIcon /> : <InboxIcon />}</ListItemIcon>
+                            </ListItem>
+                        ))}
+                    </List>
+                    <Divider />
+                </div>
+                </Drawer>
+            </div>
         );
     }
 }

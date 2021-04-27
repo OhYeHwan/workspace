@@ -17,7 +17,12 @@ const styles = {
             margin: theme.spacing(1),
         }
     },
-
+    name: {
+        color: 'black',
+    },
+    mail: {
+        color: 'gray',
+    },
 }
 
 class Account extends Component {
@@ -32,10 +37,10 @@ class Account extends Component {
                         justify="center"
                         alignItems="flex-start"
                     >
-                        <Grid item>
-                            {user.name}
+                        <Grid item className={this.props.classes.name}>
+                            {'@' + user.name}
                         </Grid>
-                        <Grid item>
+                        <Grid item className={this.props.classes.mail}>
                             {user.mail}
                         </Grid>
                     </Grid>
