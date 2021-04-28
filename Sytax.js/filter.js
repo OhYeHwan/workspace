@@ -23,3 +23,8 @@ const example_3 = array.filter(function (i) {
     }
 })
 console.log(example_3);
+
+
+const example_4 = array.filter(i => i !== 2);
+// 각 원소들 중에서 2가 아닌 것만 뽑는다. [1,4]
+console.log(example_4)
