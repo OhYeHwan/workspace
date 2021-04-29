@@ -1,8 +1,8 @@
-import BoxEx from './Layout/BoxEx';
+import ContainerEx from './Layout/ContainerEx';
 
 const App = () => {
   return (
-    <BoxEx />
+    <ContainerEx/>
   );
 }
 
