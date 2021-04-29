@@ -46,4 +46,7 @@
 ```
 
 - Router
+
   1. yarn add react-router-dom
+
+  2. yarn add history react-router-dom@next
