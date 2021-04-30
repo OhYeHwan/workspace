@@ -1,7 +1,8 @@
 import { AppBar, Toolbar, Box } from '@material-ui/core';
 import Logo from './Logo';
+import AccountBox from './AccountBox';
 
-const MainNavbar = ({Login, ...rest}) => {
+const KDBNavbar = ({Login, ...rest}) => {
     
     return (
         <AppBar
@@ -11,9 +12,10 @@ const MainNavbar = ({Login, ...rest}) => {
             <Toolbar sx={{ height: 64 }}>
                 <Logo />
                 <Box sx={{ flexGrow: 1 }} />
+                <AccountBox />
             </Toolbar>
         </AppBar>
     )
 };
 
-export default MainNavbar;
+export default KDBNavbar;

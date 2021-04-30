@@ -37,7 +37,7 @@ const Login = () => {
               password: Yup.string().max(255).required('Password is required')
             })}
             onSubmit={() => {
-              navigate('/KDBSetting', { replace: true });
+              navigate('/kdb', { replace: true });
             }}
           >
             {({

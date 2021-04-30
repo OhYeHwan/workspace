@@ -32,17 +32,19 @@ const MainLayoutContent = experimentalStyled('div')({
 });
 
 
-const MainLayout = () => (
-    <MainLayoutRoot>
-        <MainNavbar />
-        <MainLayoutWrapper>
-            <MainLayoutContainer>
-                <MainLayoutContent>
-                    <Outlet />
-                </MainLayoutContent>
-            </MainLayoutContainer>
-        </MainLayoutWrapper>
-    </MainLayoutRoot>
-);
+const MainLayout = () => {
+    return (
+        <MainLayoutRoot>
+            <MainNavbar/>
+            <MainLayoutWrapper>
+                <MainLayoutContainer>
+                    <MainLayoutContent>
+                        <Outlet/>
+                    </MainLayoutContent>
+                </MainLayoutContainer>
+            </MainLayoutWrapper>
+        </MainLayoutRoot>
+    )
+};
 
 export default MainLayout;
