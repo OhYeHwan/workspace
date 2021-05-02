@@ -14,7 +14,7 @@ const UKeditor = (props) => (
   <Card {...props}>
     <CardHeader title="UK Editor" />
     <Divider />
-    <PerfectScrollbar style={{ height: 500 }}>
+    <PerfectScrollbar>
       <CardContent>
         <form>
           <Typography color="textSecondary" gutterBottom>

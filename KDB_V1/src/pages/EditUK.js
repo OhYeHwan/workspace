@@ -40,7 +40,7 @@ const EditUK = () => (
             xl={9}
             xs={12}
           >
-            <UKeditor sx={{ height: 610 }} />
+            <UKeditor sx={{ height: '100%' }} />
           </Grid>
         </Grid>
       </Container>
