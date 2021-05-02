@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-import { Provider } from "mobx-react";
-import UKStore from "./stores/UKStore";
 import reportWebVitals from './reportWebVitals';
+import { Provider } from "mobx-react";
+import ukStore from "./stores/UKStore";
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider ukStore={UKStore}>
+    <Provider ukStore={ukStore}>
       <App />
     </Provider>
   </BrowserRouter>,

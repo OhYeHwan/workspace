@@ -1,10 +1,13 @@
-import { observable, action } from "mobx";
+import { observable, action, makeObservable } from "mobx";
 
 class UKStore {
+    constructor() {
+        makeObservable(this);
+    }
 
     @observable
     _uk = {
-        name: "",
+        name: "ex",
         description: "",
         url: "",
         question: "",

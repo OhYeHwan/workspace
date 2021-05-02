@@ -4,11 +4,12 @@ import {
   Container,
   Grid
 } from '@material-ui/core';
-import UKeditor from '../components/edit_uk/UKeditor';
+// import UKeditor from '../components/edit_uk/UKeditor';
 import UKlist from '../components/edit_uk/UKlist';
-
+import UKeditorContainer from '../components/edit_uk/UKeditorContainer';
+      
 const EditUK = () => (
-  <>
+  <>  
     <Helmet>
       <title>KDB Studio</title>
     </Helmet>
@@ -40,7 +41,7 @@ const EditUK = () => (
             xl={9}
             xs={12}
           >
-            <UKeditor sx={{ height: '100%' }} />
+            <UKeditorContainer sx={{ height: '100%' }} />
           </Grid>
         </Grid>
       </Container>

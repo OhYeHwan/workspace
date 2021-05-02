@@ -40,17 +40,17 @@ const UKLayoutContent = experimentalStyled('div')({
 const UKLayout = () => {
 
   return (
-    <UKLayoutRoot>
-      <UKNavbar />
-      <UKSidebar />
-      <UKLayoutWrapper>
-        <UKLayoutContainer>
-          <UKLayoutContent>
-            <Outlet />
-          </UKLayoutContent>
-        </UKLayoutContainer>
-      </UKLayoutWrapper>
-    </UKLayoutRoot>
+      <UKLayoutRoot>
+        <UKNavbar />
+        <UKSidebar />
+        <UKLayoutWrapper>
+          <UKLayoutContainer>
+            <UKLayoutContent>
+              <Outlet />
+            </UKLayoutContent>
+          </UKLayoutContainer>
+        </UKLayoutWrapper>
+      </UKLayoutRoot>
   );
 };
 

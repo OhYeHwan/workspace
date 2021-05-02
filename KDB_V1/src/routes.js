@@ -31,7 +31,7 @@ const routes = [
         path: 'uk',
         element: <UKLayout />,
         children: [
-            { path: '/', element: <EditUK /> },
+            { path: '/', element: <EditUK/> },
         ]
     }
 ];
