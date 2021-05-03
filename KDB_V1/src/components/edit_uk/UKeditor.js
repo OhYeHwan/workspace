@@ -8,14 +8,24 @@ import {
   Typography,
   CardActions,
   Button,
+  Chip,
+  Box,
+  InputAdornment,
+  Grid
 } from '@material-ui/core';
+import InputIcon from '@material-ui/icons/Input';
 
 const UKeditor = (props) => {
 
   const {
     uk,
+    question,
+    questions,
     onSetUKProps,
+    onChangeQuestion,
     onCreateUK,
+    onAddQuestion,
+    onKeyPress,
   } = props;
 
   const handleCreateSubmit = (event) => {
@@ -80,11 +90,39 @@ const UKeditor = (props) => {
               id="Question"
               style={{ margin: 2 }}
               fullWidth
-              value={uk && uk.question ? uk.question : ""}
-              onChange={(event) => onSetUKProps("question", event.target.value)}
+              value={question ? question : ""}
+              onChange={(event) => onChangeQuestion(event.target.value)}
               margin="normal"
               variant="outlined"
+              InputProps={{
+                onKeyPress: onKeyPress,
+                endAdornment: (
+                  <InputAdornment position="end" >
+                      <Button  onClick={onAddQuestion}>
+                        <InputIcon/>
+                      </Button>
+                  </InputAdornment>
+                )
+              }}
             />
+            <Box sx={{ boxShadow: 3, p: 1, mt: 2 }} >
+              {questions.map((question) => (
+                <Grid
+                m={1}
+                item
+                key={question.id}
+                lg={4}
+                md={6}
+                xs={12}
+                > 
+                  <Chip
+                    label={question.q}
+                    onDelete 
+                    color="primary" 
+                  />
+              </Grid>
+              ))}
+            </Box>
           </>
         </CardContent>
       </PerfectScrollbar>
