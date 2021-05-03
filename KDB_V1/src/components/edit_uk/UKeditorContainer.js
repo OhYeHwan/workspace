@@ -22,6 +22,10 @@ class UKeditorContainer extends Component {
         this.props.ukStore.addQuestion(Q);
     }
 
+    onRemoveQuestion(id) {
+        this.props.ukStore.removeQuestion(id);
+    }
+
     onhandleCreateUK = (data) => {
         this.props.ukStore.handleCreateUK(data);
     };
@@ -52,6 +56,7 @@ class UKeditorContainer extends Component {
                 onCreateUK={this.onhandleCreateUK}
                 onAddQuestion={this.onAddQuestion}
                 onKeyPress={this.onhandleKeyPress}
+                onRemoveQuestion={this.onRemoveQuestion}
             />
         );
     }

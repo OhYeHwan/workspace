@@ -25,6 +25,7 @@ const UKeditor = (props) => {
     onChangeQuestion,
     onCreateUK,
     onAddQuestion,
+    onRemoveQuestion,
     onKeyPress,
   } = props;
 
@@ -107,20 +108,12 @@ const UKeditor = (props) => {
             />
             <Box sx={{ boxShadow: 3, p: 1, mt: 2 }} >
               {questions.map((question) => (
-                <Grid
-                m={1}
-                item
-                key={question.id}
-                lg={4}
-                md={6}
-                xs={12}
-                > 
-                  <Chip
+                <Chip
+                  sx={{p: 1 , m: 1}}
                     label={question.q}
-                    onDelete 
+                    onDelete = {() => onRemoveQuestion(question.id)}
                     color="primary" 
                   />
-              </Grid>
               ))}
             </Box>
           </>

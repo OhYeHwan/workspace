@@ -8,13 +8,14 @@ class UKStore {
 
     @observable
     _uk = {
-        name: "ex",
-        description: "ex",
-        uri: "ex",
+        name: "",
+        description: "",
+        uri: "",
+        question: this.questions,
     };
 
     @observable
-    _question = "sdads";
+    _question = "";
 
     get question() {
         return this._question;
@@ -32,6 +33,15 @@ class UKStore {
     addQuestion(question) {
         this._questions.push(question);
         this._question = "";
+        console.log(this.questions);
+    }
+
+    @action
+    removeQuestion(id) {
+        let index = this._questions.findIndex((question) => question.id === id);
+        if (index > -1) {
+            this._questions.splice(index, 1);
+        }
         console.log(this.questions);
     }
 
@@ -75,8 +85,9 @@ class UKStore {
         this._uk = {
             name: "",
             description: "",
-            uri: "",
+            uri: "",   
         }
+        this._questions = []
     };
 
     @action
