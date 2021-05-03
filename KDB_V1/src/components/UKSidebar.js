@@ -21,7 +21,7 @@ const items = [
     title: 'Edit UK'
   },
   {
-    href: '/kdb/account',
+    href: '/uk/account',
     icon: UserIcon,
     title: 'Account'
     },

@@ -1,26 +1,3 @@
-// import React from 'react';
-// import UKeditor from './UKeditor';
-// import { inject, observer } from 'mobx-react';
-
-
-// const UKeditorContainer = (props) => {
-
-//     const onSetUKProps = (name, value) => {
-//         props.ukStore.setUKProps(name, value);
-//     }
-
-//     const { ukStore } = props;
-
-//     return (
-//         <UKeditor
-//             uk={ukStore.uk}
-//             onSetUKProps={onSetUKProps}
-//         />
-//     );
-// };
-
-// export default inject('ukStore')(observer(UKeditorContainer));
-
 import React, { Component } from 'react';
 import UKeditor from './UKeditor';
 import { inject, observer } from 'mobx-react';
@@ -35,12 +12,17 @@ class UKeditorContainer extends Component {
         this.props.ukStore.setUKProps(name, value);
     }
 
+    onhandleCreateUK = (data) => {
+        this.props.ukStore.handleCreateUK(data);
+    };
+
     render() {
         const { ukStore } = this.props;
         return (
             <UKeditor
                 uk={ukStore.uk}
                 onSetUKProps={this.onSetUKProps}
+                onCreateUK = {this.onhandleCreateUK}
             />
         );
     }

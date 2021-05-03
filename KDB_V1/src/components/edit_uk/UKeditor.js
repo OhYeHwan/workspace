@@ -15,7 +15,13 @@ const UKeditor = (props) => {
   const {
     uk,
     onSetUKProps,
+    onCreateUK,
   } = props;
+
+  const handleCreateSubmit = (event) => {
+    event.preventDefault();
+    onCreateUK(uk);
+  }
 
   return (
     <Card>
@@ -23,7 +29,7 @@ const UKeditor = (props) => {
       <Divider />
       <PerfectScrollbar>
         <CardContent>
-          <form noValidate>
+          <>
             <Typography color="textSecondary" gutterBottom>
               UK Name
           </Typography>
@@ -48,6 +54,8 @@ const UKeditor = (props) => {
               fullWidth
               multiline
               rows={4}
+              value={uk && uk.description ? uk.description : ""}
+              onChange={(event) => onSetUKProps("description", event.target.value)}
               margin="normal"
               variant="outlined"
             />
@@ -59,6 +67,8 @@ const UKeditor = (props) => {
               id="URI"
               style={{ margin: 2 }}
               fullWidth
+              value={uk && uk.uri ? uk.uri : ""}
+              onChange={(event) => onSetUKProps("uri", event.target.value)}
               margin="normal"
               variant="outlined"
             />
@@ -70,22 +80,26 @@ const UKeditor = (props) => {
               id="Question"
               style={{ margin: 2 }}
               fullWidth
+              value={uk && uk.question ? uk.question : ""}
+              onChange={(event) => onSetUKProps("question", event.target.value)}
               margin="normal"
               variant="outlined"
             />
-          </form>
+          </>
         </CardContent>
       </PerfectScrollbar>
       <Divider />
-      <CardActions>
-        <Button
-          color="primary"
-          fullWidth
-          variant="text"
-        >
-          Edit
-      </Button>
-      </CardActions>
+      <form onClick={handleCreateSubmit}>
+        <CardActions>
+          <Button
+            color="primary"
+            fullWidth
+            variant="text"
+            >
+            Edit
+          </Button>
+        </CardActions>
+      </form>
     </Card>
   )
 };

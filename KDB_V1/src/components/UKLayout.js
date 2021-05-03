@@ -2,6 +2,7 @@ import { Outlet } from 'react-router-dom';
 import { experimentalStyled } from '@material-ui/core';
 import UKNavbar from './UKNavbar';
 import UKSidebar from './UKSidebar';
+import { useState } from 'react';
 
 const UKLayoutRoot = experimentalStyled('div')(
   ({ theme }) => ({
@@ -38,11 +39,15 @@ const UKLayoutContent = experimentalStyled('div')({
 });
 
 const UKLayout = () => {
+  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
       <UKLayoutRoot>
-        <UKNavbar />
-        <UKSidebar />
+      <UKNavbar onMobileNavOpen={()=> setMobileNavOpen(true)}/>
+      <UKSidebar
+        onMobileClose={() => setMobileNavOpen(false)}
+        openMobile={isMobileNavOpen}
+      />
         <UKLayoutWrapper>
           <UKLayoutContainer>
             <UKLayoutContent>

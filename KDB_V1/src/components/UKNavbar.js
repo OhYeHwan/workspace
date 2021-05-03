@@ -1,8 +1,9 @@
-import { AppBar, Toolbar, Box } from '@material-ui/core';
+import { AppBar, Toolbar, Box, Hidden, IconButton } from '@material-ui/core';
 import Logo from './Logo';
 import AccountBox from './AccountBox';
+import MenuIcon from '@material-ui/icons/Menu';
 
-const UKNavbar = ({Login, ...rest}) => {
+const UKNavbar = ({onMobileNavOpen, ...rest}) => {
     
     return (
         <AppBar
@@ -12,7 +13,17 @@ const UKNavbar = ({Login, ...rest}) => {
             <Toolbar sx={{ height: 64 }}>
                 <Logo />
                 <Box sx={{ flexGrow: 1 }} />
-                <AccountBox />
+                <Hidden lgDown>
+                    <AccountBox />
+                </Hidden>
+                <Hidden lgUp>
+                    <IconButton
+                        color="inherit"
+                        onClick={onMobileNavOpen}
+                    >
+                        <MenuIcon />
+                    </IconButton>
+                </Hidden>
             </Toolbar>
         </AppBar>
     )

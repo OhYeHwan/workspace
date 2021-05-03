@@ -1,4 +1,5 @@
-import { observable, action, makeObservable } from "mobx";
+import { observable, action, makeObservable, toJS } from "mobx";
+import axios from "axios";
 
 class UKStore {
     constructor() {
@@ -8,9 +9,9 @@ class UKStore {
     @observable
     _uk = {
         name: "ex",
-        description: "",
-        url: "",
-        question: "",
+        description: "ex",
+        uri: "ex",
+        question: "ex",
     };
     
     get uk() {
@@ -24,6 +25,32 @@ class UKStore {
             [name]: value,
         };
     }
+
+    @action
+    handleCreateUK = (data) => {
+        console.log("Container handleCreate 실행");
+        console.log(toJS(data));
+
+        axios.post("", {
+            name: data.name,
+            description: data.description,
+            uri: data.uri,
+            question: data.question,
+        })
+        .then(function (response) {
+            alert("로직 작성");
+        })
+        .catch(function (error) {
+            alert("Container handleCreate 에러발생")
+        });
+
+        this._uk = {
+            name: "",
+            description: "",
+            uri: "",
+            question: "",
+        }
+    };
 
 }
 
