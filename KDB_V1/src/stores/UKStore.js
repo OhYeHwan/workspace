@@ -64,7 +64,7 @@ class UKStore {
 
     @action
     handleCreateUK = (uk, questions) => {
-        console.log("Container handleCreate 실행");
+        console.log("UKStore handleCreate 실행");
         // console.log(uk.name)
         // console.log(questions)
 

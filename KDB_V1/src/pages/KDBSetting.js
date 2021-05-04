@@ -5,10 +5,8 @@ import {
     Grid,
     Pagination,
 } from '@material-ui/core'
-// import CreateKDB from '../components/CreateKDB';
-import EKDBListToolbar from '../components/EKDB/EKDBListToolbar';
-import EKDBCard from '../components/EKDB/EKDBCard';
-import ekdbs from '../components/EKDB/EKDBItems';
+import EKDBListToolbarContainer from '../components/EKDB/EKDBListToolbarContainer';
+import EKDBListContainer from '../components/EKDB/EKDBListContainer'
 
 const KDBSetting = () => (
     <>
@@ -23,23 +21,13 @@ const KDBSetting = () => (
             }}
         >
             <Container maxWidth={false}>
-                <EKDBListToolbar />
+                <EKDBListToolbarContainer />
                 <Box sx={{ pt: 3 }}>
           <Grid
             container
             spacing={3}
           >
-            {ekdbs.map((ekdb) => (
-              <Grid
-                item
-                key={ekdb.id}
-                lg={4}
-                md={6}
-                xs={12}
-                > 
-                    <EKDBCard EKDB={ekdb} />
-              </Grid>
-            ))}
+            <EKDBListContainer/>
           </Grid>
         </Box>
         <Box

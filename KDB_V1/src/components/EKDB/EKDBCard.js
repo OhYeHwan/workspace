@@ -43,14 +43,14 @@ const EKDBCard = ({ EKDB, ...rest }) => {
                         gutterBottom
                         variant="h4"
                     >
-                        {EKDB.title}
+                        {EKDB.EKDB_NAME}
                     </Typography>
                     <Typography
                         align="center"
                         color="textPrimary"
                         variant="body1"
                     >
-                        {EKDB.description}
+                        {EKDB.EKDB_DES}
                     </Typography>
                 </CardContent>
                 <Box sx={{ flexGrow: 1 }} />
