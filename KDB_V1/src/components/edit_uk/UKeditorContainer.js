@@ -26,12 +26,12 @@ class UKeditorContainer extends Component {
         this.props.ukStore.removeQuestion(id);
     }
 
-    onhandleCreateUK = (uk, questions) => {
+    onHandleCreateUK = (uk, questions) => {
         this.props.ukStore.handleCreateUK(uk, questions);
     };
 
 
-    onhandleKeyPress = (event) => {
+    onHandleKeyPress = (event) => {
         let { question } = this.props.ukStore;
         let Q = {
             id: generateId(5),
@@ -53,9 +53,9 @@ class UKeditorContainer extends Component {
                 questions={ukStore.questions}
                 onSetUKProps={this.onSetUKProps}
                 onChangeQuestion={this.onChangeQuestion}
-                onCreateUK={this.onhandleCreateUK}
+                onHandleCreateUK={this.onHandleCreateUK}
                 onAddQuestion={this.onAddQuestion}
-                onKeyPress={this.onhandleKeyPress}
+                onHandleKeyPress={this.onHandleKeyPress}
                 onRemoveQuestion={this.onRemoveQuestion}
             />
         );
