@@ -26,8 +26,8 @@ class UKeditorContainer extends Component {
         this.props.ukStore.removeQuestion(id);
     }
 
-    onhandleCreateUK = (data) => {
-        this.props.ukStore.handleCreateUK(data);
+    onhandleCreateUK = (uk, questions) => {
+        this.props.ukStore.handleCreateUK(uk, questions);
     };
 
 

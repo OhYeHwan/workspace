@@ -11,7 +11,6 @@ class UKStore {
         name: "",
         description: "",
         uri: "",
-        question: this.questions,
     };
 
     @observable
@@ -64,16 +63,16 @@ class UKStore {
     }
 
     @action
-    handleCreateUK = (data) => {
+    handleCreateUK = (uk, questions) => {
         console.log("Container handleCreate 실행");
-        console.log(toJS(data));
-        console.log(data.name);
+        // console.log(uk.name)
+        // console.log(questions)
 
-        axios.post("http://192.168.155.18:4000/EKDB", {
-            name: data.name,
-            description: data.description,
-            uri: data.uri,
-            question: data.question,
+        axios.post("http://192.168.155.18:4000/UK", {
+            UK_NAME: uk.name,
+            UK_DES: uk.description,
+            UK_URI: uk.uri,
+            UK_QUESTION: questions.map(question => question.q),
         })
         .then(function (response) {
             console.log(response);

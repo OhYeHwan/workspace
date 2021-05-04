@@ -11,7 +11,6 @@ import {
   Chip,
   Box,
   InputAdornment,
-  Grid
 } from '@material-ui/core';
 import InputIcon from '@material-ui/icons/Input';
 
@@ -31,7 +30,7 @@ const UKeditor = (props) => {
 
   const handleCreateSubmit = (event) => {
     event.preventDefault();
-    onCreateUK(uk);
+    onCreateUK(uk, questions);
   }
 
   return (
@@ -109,10 +108,11 @@ const UKeditor = (props) => {
             <Box sx={{ boxShadow: 3, p: 1, mt: 2 }} >
               {questions.map((question) => (
                 <Chip
+                  key = {question.id}
                   sx={{p: 1 , m: 1}}
-                    label={question.q}
-                    onDelete = {() => onRemoveQuestion(question.id)}
-                    color="primary" 
+                  label={question.q}
+                  onDelete = {() => onRemoveQuestion(question.id)}
+                  color="primary" 
                   />
               ))}
             </Box>
