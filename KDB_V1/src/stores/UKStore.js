@@ -65,9 +65,7 @@ class UKStore {
     @action
     handleCreateUK = (uk, questions) => {
         console.log("UKStore handleCreate 실행");
-        // console.log(uk.name)
-        // console.log(questions)
-
+        
         axios.post("http://192.168.155.18:4000/UK", {
             UK_NAME: uk.name,
             UK_DES: uk.description,

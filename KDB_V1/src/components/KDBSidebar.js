@@ -8,7 +8,7 @@ import {
   List,
 } from '@material-ui/core';
 import {
-    User as UserIcon,
+    // User as UserIcon,
     Database as DatabaseIcon,
 //   PlusCircle as PlusCircleIcon,
 } from 'react-feather';
@@ -20,11 +20,11 @@ const items = [
     icon: DatabaseIcon,
     title: 'Edit EKDB'
   },
-  {
-    href: '/kdb/account',
-    icon: UserIcon,
-    title: 'Account'
-  },
+  // {
+  //   href: '/kdb/account',
+  //   icon: UserIcon,
+  //   title: 'Account'
+  // },
 ];
 
 const EKDBSidebar = ({ onMobileClose, openMobile }) => {

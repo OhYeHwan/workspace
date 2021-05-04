@@ -25,16 +25,12 @@ class EKDBStore {
             ...this._ekdb,
             [name]: value,
         };
+        console.log('1');
     }
 
     //ekdb 리스트를 저장할 배열
     @observable
     _ekdbs = []; // EKDB_NAME , EKDB_DES
-
-    @action
-    setEKDBs() {
-        
-    }
 
     get ekdbs() {
         return this._ekdbs;

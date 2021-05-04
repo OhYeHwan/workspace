@@ -49,7 +49,7 @@ const EKDBCreateDialog = (props) => {
                         EKDB 생성하기 입니다.
                     </DialogContentText>
                     <TextField
-                        value={ekdb && ekdb.title ? ekdb.title : ""}
+                        value={ ekdb.title ? ekdb.title : ""}
                         onChange={(event) => onSetEKDBProps("title", event.target.value)}
                         margin="dense"
                         id="title"
@@ -59,7 +59,7 @@ const EKDBCreateDialog = (props) => {
                     <TextField
                         multiline
                         rows={6}
-                        value={ekdb && ekdb.description ? ekdb.description : ""}
+                        value={ ekdb.description ? ekdb.description : ""}
                         onChange={(event => onSetEKDBProps("description", event.target.value))}
                         margin="dense"
                         id="description"
