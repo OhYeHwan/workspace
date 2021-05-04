@@ -22,15 +22,15 @@ const UKeditor = (props) => {
     questions,
     onSetUKProps,
     onChangeQuestion,
-    onCreateUK,
+    onHandleCreateUK,
     onAddQuestion,
     onRemoveQuestion,
-    onKeyPress,
+    onHandleKeyPress,
   } = props;
 
   const handleCreateSubmit = (event) => {
     event.preventDefault();
-    onCreateUK(uk, questions);
+    onHandleCreateUK(uk, questions);
   }
 
   return (
@@ -95,7 +95,7 @@ const UKeditor = (props) => {
               margin="normal"
               variant="outlined"
               InputProps={{
-                onKeyPress: onKeyPress,
+                onKeyPress: onHandleKeyPress,
                 endAdornment: (
                   <InputAdornment position="end" >
                       <Button  onClick={onAddQuestion}>
