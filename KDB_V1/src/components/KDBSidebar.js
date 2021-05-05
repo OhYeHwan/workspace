@@ -34,7 +34,7 @@ const EKDBSidebar = ({ onMobileClose, openMobile }) => {
     if (openMobile && onMobileClose) {
       onMobileClose();
     }
-  }, [location.pathname]);
+  }, [location.pathname, onMobileClose, openMobile]);
 
   const content = (
     <Box

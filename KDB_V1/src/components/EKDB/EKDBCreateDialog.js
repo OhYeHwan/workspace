@@ -28,7 +28,7 @@ const EKDBCreateDialog = (props) => {
     };
 
     const handleCreateSubmit = (event) => {
-        event.preventDefault();
+        // event.preventDefault();
         onHandleCreateEKDB(ekdb);
         handleClose();
     }
