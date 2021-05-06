@@ -15,7 +15,6 @@ import {
 import InputIcon from '@material-ui/icons/Input';
 
 const UKeditor = (props) => {
-
   const {
     uk,
     question,
@@ -31,7 +30,7 @@ const UKeditor = (props) => {
   const handleCreateSubmit = (event) => {
     event.preventDefault();
     onHandleCreateUK(uk, questions);
-  }
+  };
 
   return (
     <Card>
@@ -42,78 +41,80 @@ const UKeditor = (props) => {
           <>
             <Typography color="textSecondary" gutterBottom>
               UK Name
-          </Typography>
+            </Typography>
             <TextField
               id="UK Name"
               label="필수 입력란"
               style={{ margin: 2 }}
               required
               fullWidth
-              value={uk && uk.name ? uk.name : ""}
-              onChange={(event) => onSetUKProps("name", event.target.value)}
+              value={uk && uk.name ? uk.name : ''}
+              onChange={(event) => onSetUKProps('name', event.target.value)}
               margin="normal"
               variant="outlined"
             />
             <Divider style={{ margin: 20 }} />
             <Typography color="textSecondary" gutterBottom>
               Description
-          </Typography>
+            </Typography>
             <TextField
               id="Description"
               style={{ margin: 2 }}
               fullWidth
               multiline
               rows={4}
-              value={uk && uk.description ? uk.description : ""}
-              onChange={(event) => onSetUKProps("description", event.target.value)}
+              value={uk && uk.description ? uk.description : ''}
+              onChange={(event) =>
+                onSetUKProps('description', event.target.value)
+              }
               margin="normal"
               variant="outlined"
             />
             <Divider style={{ margin: 20 }} />
             <Typography color="textSecondary" gutterBottom>
               URI
-          </Typography>
+            </Typography>
             <TextField
               id="URI"
               style={{ margin: 2 }}
               fullWidth
-              value={uk && uk.uri ? uk.uri : ""}
-              onChange={(event) => onSetUKProps("uri", event.target.value)}
+              value={uk && uk.uri ? uk.uri : ''}
+              onChange={(event) => onSetUKProps('uri', event.target.value)}
               margin="normal"
               variant="outlined"
             />
             <Divider style={{ margin: 20 }} />
             <Typography color="textSecondary" gutterBottom>
               Question
-          </Typography>
+            </Typography>
             <TextField
               id="Question"
               style={{ margin: 2 }}
               fullWidth
-              value={question ? question : ""}
+              value={question ? question : ''}
               onChange={(event) => onChangeQuestion(event.target.value)}
               margin="normal"
               variant="outlined"
               InputProps={{
                 onKeyPress: onHandleKeyPress,
                 endAdornment: (
-                  <InputAdornment position="end" >
-                      <Button  onClick={onAddQuestion}>
-                        <InputIcon/>
-                      </Button>
+                  <InputAdornment position="end">
+                    <Button onClick={onAddQuestion}>
+                      <InputIcon />
+                    </Button>
                   </InputAdornment>
-                )
+                ),
               }}
             />
-            <Box sx={{ boxShadow: 3, p: 1, mt: 2 }} >
+            <Box sx={{ boxShadow: 3, p: 1, mt: 2 }}>
               {questions.map((question) => (
                 <Chip
-                  key = {question.id}
-                  sx={{p: 1 , m: 1}}
+                  key={question.id}
+                  sx={{ p: 1, m: 1 }}
                   label={question.q}
-                  onDelete = {() => onRemoveQuestion(question.id)}
-                  color="primary" 
-                  />
+                  onDelete={() => onRemoveQuestion(question.id)}
+                  color="primary"
+                />
               ))}
             </Box>
           </>
@@ -122,17 +123,13 @@ const UKeditor = (props) => {
       <Divider />
       <form onClick={handleCreateSubmit}>
         <CardActions>
-          <Button
-            color="primary"
-            fullWidth
-            variant="text"
-            >
+          <Button color="primary" fullWidth variant="text">
             Edit
           </Button>
         </CardActions>
       </form>
     </Card>
-  )
+  );
 };
 
 export default UKeditor;

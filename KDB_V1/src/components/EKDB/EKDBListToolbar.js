@@ -11,9 +11,7 @@ import { Search as SearchIcon } from 'react-feather';
 import EKDBCreateDialog from './EKDBCreateDialog';
 
 class EKDBListToolbar extends Component {
-
   render() {
-
     const { ekdb, onSetEKDBProps, onHandleCreateEKDB } = this.props;
 
     return (
@@ -21,11 +19,11 @@ class EKDBListToolbar extends Component {
         <Box
           sx={{
             display: 'flex',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
           }}
         >
           <EKDBCreateDialog
-            ekdb={ ekdb }
+            ekdb={ekdb}
             onSetEKDBProps={onSetEKDBProps}
             onHandleCreateEKDB={onHandleCreateEKDB}
           >
@@ -41,14 +39,11 @@ class EKDBListToolbar extends Component {
                   InputProps={{
                     startAdornment: (
                       <InputAdornment position="start">
-                        <SvgIcon
-                          fontSize="small"
-                          color="action"
-                        >
+                        <SvgIcon fontSize="small" color="action">
                           <SearchIcon />
                         </SvgIcon>
                       </InputAdornment>
-                    )
+                    ),
                   }}
                   placeholder="Search EKDB"
                   variant="outlined"

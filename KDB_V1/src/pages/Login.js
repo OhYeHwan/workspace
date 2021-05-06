@@ -2,12 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-import {
-  Box,
-  Button,
-  Container,
-  TextField,
-} from '@material-ui/core';
+import { Box, Button, Container, TextField } from '@material-ui/core';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,18 +18,21 @@ const Login = () => {
           display: 'flex',
           flexDirection: 'column',
           height: '100%',
-          justifyContent: 'center'
+          justifyContent: 'center',
         }}
       >
         <Container maxWidth="sm">
           <Formik
             initialValues={{
               email: 'yehwan_oh@tmax.co.kr',
-              password: 'Password123'
+              password: 'Password123',
             }}
             validationSchema={Yup.object().shape({
-              email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-              password: Yup.string().max(255).required('Password is required')
+              email: Yup.string()
+                .email('Must be a valid email')
+                .max(255)
+                .required('Email is required'),
+              password: Yup.string().max(255).required('Password is required'),
             })}
             onSubmit={() => {
               navigate('/kdb', { replace: true });
@@ -47,14 +45,32 @@ const Login = () => {
               handleSubmit,
               isSubmitting,
               touched,
-              values
+              values,
             }) => (
               <form onSubmit={handleSubmit}>
                 <Box sx={{ mb: 6 }}>
-                    <Box display="flex" sx={{justifyContent: 'center'}}>
-                        <Box component="span" m={0} color="#209E91" fontWeight="fontWeightLight" fontFamily="Monospace" fontSize="h2.fontSize">KDB</Box>
-                        <Box component="span" m={0} color="#000000" fontWeight="fontWeightLight" fontFamily="Monospace" fontSize="h2.fontSize">STUDIO</Box>
+                  <Box display="flex" sx={{ justifyContent: 'center' }}>
+                    <Box
+                      component="span"
+                      m={0}
+                      color="#209E91"
+                      fontWeight="fontWeightLight"
+                      fontFamily="Monospace"
+                      fontSize="h2.fontSize"
+                    >
+                      KDB
                     </Box>
+                    <Box
+                      component="span"
+                      m={0}
+                      color="#000000"
+                      fontWeight="fontWeightLight"
+                      fontFamily="Monospace"
+                      fontSize="h2.fontSize"
+                    >
+                      STUDIO
+                    </Box>
+                  </Box>
                 </Box>
                 <TextField
                   error={Boolean(touched.email && errors.email)}

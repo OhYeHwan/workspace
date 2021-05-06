@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { Provider } from "mobx-react";
+import { Provider } from 'mobx-react';
 import ukStore from './stores/UKStore';
 import ekdbStore from './stores/EKDBStore';
 

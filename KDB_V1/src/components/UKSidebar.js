@@ -1,16 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Box, Drawer, Hidden, List } from '@material-ui/core';
 import {
-  Box,
-  Drawer,
-  Hidden,
-  List,
-} from '@material-ui/core';
-import {
-    User as UserIcon,
-    PlusCircle as PlusCircleIcon,
-   Home as HomeIcon,
+  User as UserIcon,
+  PlusCircle as PlusCircleIcon,
+  Home as HomeIcon,
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -18,18 +13,18 @@ const items = [
   {
     href: '/uk',
     icon: PlusCircleIcon,
-    title: 'Edit UK'
+    title: 'Edit UK',
   },
   {
     href: '/uk/account',
     icon: UserIcon,
-    title: 'Account'
-    },
+    title: 'Account',
+  },
   {
-      href: '/kdb',
-      icon: HomeIcon,
-      title: 'Home'
-  }
+    href: '/kdb',
+    icon: HomeIcon,
+    title: 'Home',
+  },
 ];
 
 const UKSidebar = ({ onMobileClose, openMobile }) => {
@@ -75,8 +70,8 @@ const UKSidebar = ({ onMobileClose, openMobile }) => {
           variant="temporary"
           PaperProps={{
             sx: {
-              width: 60
-            }
+              width: 60,
+            },
           }}
         >
           {content}
@@ -91,8 +86,8 @@ const UKSidebar = ({ onMobileClose, openMobile }) => {
             sx: {
               width: 60,
               top: 64,
-              height: 'calc(100% - 64px)'
-            }
+              height: 'calc(100% - 64px)',
+            },
           }}
         >
           {content}
@@ -104,12 +99,12 @@ const UKSidebar = ({ onMobileClose, openMobile }) => {
 
 UKSidebar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+  openMobile: PropTypes.bool,
 };
 
 UKSidebar.defaultProps = {
-  onMobileClose: () => { },
-  openMobile: false
+  onMobileClose: () => {},
+  openMobile: false,
 };
 
 export default UKSidebar;

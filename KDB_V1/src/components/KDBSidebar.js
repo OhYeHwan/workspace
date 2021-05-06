@@ -1,16 +1,11 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { Box, Drawer, Hidden, List } from '@material-ui/core';
 import {
-  Box,
-  Drawer,
-  Hidden,
-  List,
-} from '@material-ui/core';
-import {
-    // User as UserIcon,
-    Database as DatabaseIcon,
-//   PlusCircle as PlusCircleIcon,
+  // User as UserIcon,
+  Database as DatabaseIcon,
+  //   PlusCircle as PlusCircleIcon,
 } from 'react-feather';
 import NavItem from './NavItem';
 
@@ -18,7 +13,7 @@ const items = [
   {
     href: '/kdb',
     icon: DatabaseIcon,
-    title: 'Edit EKDB'
+    title: 'Edit EKDB',
   },
   // {
   //   href: '/kdb/account',
@@ -70,8 +65,8 @@ const EKDBSidebar = ({ onMobileClose, openMobile }) => {
           variant="temporary"
           PaperProps={{
             sx: {
-              width: 60
-            }
+              width: 60,
+            },
           }}
         >
           {content}
@@ -86,8 +81,8 @@ const EKDBSidebar = ({ onMobileClose, openMobile }) => {
             sx: {
               width: 60,
               top: 64,
-              height: 'calc(100% - 64px)'
-            }
+              height: 'calc(100% - 64px)',
+            },
           }}
         >
           {content}
@@ -99,12 +94,12 @@ const EKDBSidebar = ({ onMobileClose, openMobile }) => {
 
 EKDBSidebar.propTypes = {
   onMobileClose: PropTypes.func,
-  openMobile: PropTypes.bool
+  openMobile: PropTypes.bool,
 };
 
 EKDBSidebar.defaultProps = {
-  onMobileClose: () => { },
-  openMobile: false
+  onMobileClose: () => {},
+  openMobile: false,
 };
 
 export default EKDBSidebar;
