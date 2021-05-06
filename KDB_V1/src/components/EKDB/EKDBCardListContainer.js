@@ -5,6 +5,7 @@ import { Grid } from '@material-ui/core';
 import autobind from 'autobind-decorator';
 
 @inject("ekdbStore")
+@inject("ukStore")
 @observer
 @autobind
 class EKDBCardListContainer extends Component {
