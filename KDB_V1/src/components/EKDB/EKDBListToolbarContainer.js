@@ -20,7 +20,6 @@ class EKDBListToolbarContainer extends Component {
 
     onHandleCreateEKDB(ekdb) {
         this.props.ekdbStore.handleCreateEKDB(ekdb);
-        this.props.ekdbStore.getEKDBs();
     }
 
     render() {

@@ -11,25 +11,34 @@ const EKDBCreateDialog = (props) => {
 
     const {
         ekdb,
+        EKDB,
         onSetEKDBProps,
         onHandleCreateEKDB,
+        handleUpdateEKDB,
     } = props;
 
     const [open, setOpen] = React.useState(false);
     
     const handleClickOpen = () => {
         setOpen(true);
+        EKDB ? onSetEKDBProps("EKDB_NAME", EKDB.EKDB_NAME) : onSetEKDBProps("EKDB_NAME", "");
+        EKDB ? onSetEKDBProps("EKDB_DES", EKDB.EKDB_DES) : onSetEKDBProps("EKDB_DES", "");
     };
 
     const handleClose = () => {
         setOpen(false);
-        onSetEKDBProps("title", "");
-        onSetEKDBProps("description", "")
+        onSetEKDBProps("EKDB_NAME", "");
+        onSetEKDBProps("EKDB_DES", "")
     };
 
-    const handleCreateSubmit = (event) => {
+    const handleCreateSubmit = () => {
         // event.preventDefault();
         onHandleCreateEKDB(ekdb);
+        handleClose();
+    }
+
+    const handleUpdateSubmit = () => {
+        handleUpdateEKDB(ekdb);
         handleClose();
     }
 
@@ -40,27 +49,28 @@ const EKDBCreateDialog = (props) => {
                 variant="contained"
                 onClick={handleClickOpen}
             >
-                EKDB 생성하기
+                {props.children}
             </Button>
             <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-                <DialogTitle id = "form-dialog-title">EKDB 생성하기</DialogTitle>
+                <DialogTitle id = "form-dialog-title">{props.children}</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
-                        EKDB 생성하기 입니다.
+                        {props.children} 입니다.
                     </DialogContentText>
                     <TextField
-                        value={ ekdb.title ? ekdb.title : ""}
-                        onChange={(event) => onSetEKDBProps("title", event.target.value)}
+                        disabled={props.children ===  "수정하기" ? true : false}
+                        value={ekdb && ekdb.EKDB_NAME ? ekdb.EKDB_NAME : ""}
+                        onChange={(event) => onSetEKDBProps("EKDB_NAME", event.target.value)}
                         margin="dense"
-                        id="title"
-                        label="EKDB title"
+                        id="Name"
+                        label="EKDB Name"
                         fullWidth
                     />
                     <TextField
                         multiline
                         rows={6}
-                        value={ ekdb.description ? ekdb.description : ""}
-                        onChange={(event => onSetEKDBProps("description", event.target.value))}
+                        value={ ekdb && ekdb.EKDB_DES ? ekdb.EKDB_DES : ""}
+                        onChange={(event => onSetEKDBProps("EKDB_DES", event.target.value))}
                         margin="dense"
                         id="description"
                         label="EKDB Description"
@@ -68,9 +78,9 @@ const EKDBCreateDialog = (props) => {
                     />
                 </DialogContent>
                 <DialogActions>
-                    <form onClick={handleCreateSubmit}>
+                    <form onClick={props.children === "EKDB 생성하기" ? handleCreateSubmit : handleUpdateSubmit}>
                         <Button color="primary">
-                            생성하기
+                            {props.children}
                         </Button>
                     </form>
                     <Button onClick={handleClose} color="primary">

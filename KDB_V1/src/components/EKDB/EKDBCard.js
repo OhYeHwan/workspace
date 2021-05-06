@@ -8,11 +8,33 @@ import {
   Grid,
 Typography,
   CardActionArea,
+  Button,
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { useNavigate } from 'react-router-dom';
+import EKDBCreateDialog from './EKDBCreateDialog';
 
-const EKDBCard = ({ EKDB, ...rest }) => {
+
+const EKDBCard = (props) => {
+
+    const {
+        ekdb,
+        EKDB,
+        onSetEKDBProps,
+        onHandleDeleteEKDB,
+        onHandleUpdateEKDB,
+    } = props;
+
+    const handleDeleteSubmit = () => {
+        console.log(EKDB.EKDB_NAME);
+        onHandleDeleteEKDB(EKDB.EKDB_NAME);
+    }
+
+    const handleUpdateEKDB = () => {
+        console.log("EKDB Card handleUpdateEKDB");
+        onHandleUpdateEKDB(ekdb);
+    }
+
     const navigate = useNavigate();
     return (
         <Card
@@ -21,7 +43,6 @@ const EKDBCard = ({ EKDB, ...rest }) => {
                 flexDirection: 'column',
                 height: '100%'
             }}
-            {...rest}
         >
             <CardActionArea onClick={() => { navigate('/uk', { replace: true }); }}>
                 <CardContent>
@@ -33,7 +54,7 @@ const EKDBCard = ({ EKDB, ...rest }) => {
                         }}
                     >
                         <Avatar
-                            alt="EKDB"
+                            alt="ekdb"
                             variant="square"
                         />
                     </Box>
@@ -55,6 +76,7 @@ const EKDBCard = ({ EKDB, ...rest }) => {
                 </CardContent>
                 <Box sx={{ flexGrow: 1 }} />
                 <Divider />
+            </CardActionArea>
                 <Box sx={{ p: 2 }}>
                     <Grid
                         container
@@ -76,17 +98,35 @@ const EKDBCard = ({ EKDB, ...rest }) => {
                                 variant="body2"
                             >
                                 Updated 2hr ago
-          </Typography>
+                            </Typography>
+                        </Grid>
+                        <Grid
+                            item
+                            sx={{
+                                alignItems: 'center',
+                                display: 'flex'
+                            }}
+                        >
+                            <EKDBCreateDialog
+                                ekdb={ekdb}
+                                EKDB={EKDB}
+                                onSetEKDBProps={onSetEKDBProps}
+                                handleUpdateEKDB={handleUpdateEKDB}
+                            >
+                                수정하기
+                            </EKDBCreateDialog>
+                            <Button onClick={handleDeleteSubmit} variant="contained" color="secondary">
+                                삭제
+                            </Button>
                         </Grid>
                     </Grid>
                 </Box>
-            </CardActionArea>
         </Card>
     );
 };
 
 EKDBCard.propTypes = {
-  EKDB: PropTypes.object.isRequired
+  ekdb: PropTypes.object.isRequired
 };
 
 export default EKDBCard;

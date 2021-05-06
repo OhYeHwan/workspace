@@ -28,7 +28,9 @@ class EKDBListToolbar extends Component {
             ekdb={ ekdb }
             onSetEKDBProps={onSetEKDBProps}
             onHandleCreateEKDB={onHandleCreateEKDB}
-          />
+          >
+            EKDB 생성하기
+          </EKDBCreateDialog>
         </Box>
         <Box sx={{ mt: 3 }}>
           <Card>

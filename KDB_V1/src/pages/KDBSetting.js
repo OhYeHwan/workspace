@@ -6,7 +6,7 @@ import {
     Pagination,
 } from '@material-ui/core'
 import EKDBListToolbarContainer from '../components/EKDB/EKDBListToolbarContainer';
-import EKDBListContainer from '../components/EKDB/EKDBListContainer'
+import EKDBCardListContainer from '../components/EKDB/EKDBCardListContainer'
 
 const KDBSetting = () => (
     <>
@@ -27,7 +27,7 @@ const KDBSetting = () => (
             container
             spacing={3}
           >
-            <EKDBListContainer/>
+            <EKDBCardListContainer/>
           </Grid>
         </Box>
         <Box
