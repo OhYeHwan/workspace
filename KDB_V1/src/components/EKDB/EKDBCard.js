@@ -14,7 +14,7 @@ import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import { useNavigate } from 'react-router-dom';
 import EKDBCreateDialog from './EKDBCreateDialog';
 
-const EKDBCard = (props) => {
+const EKDBCard = props => {
   const {
     ekdb,
     EKDB,

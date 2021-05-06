@@ -46,7 +46,7 @@ const UKSidebar = ({ onMobileClose, openMobile }) => {
     >
       <Box sx={{ p: 0 }}>
         <List>
-          {items.map((item) => (
+          {items.map(item => (
             <NavItem
               href={item.href}
               key={item.title}

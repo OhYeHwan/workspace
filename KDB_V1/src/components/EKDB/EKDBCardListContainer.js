@@ -30,7 +30,7 @@ class EKDBCardListContainer extends Component {
     const { ekdbStore } = this.props;
     return (
       <>
-        {this.props.ekdbStore.ekdbs.map((EKDB) => (
+        {this.props.ekdbStore.ekdbs.map(EKDB => (
           <Grid item key={EKDB.EKDB_NAME} lg={4} md={6} xs={12}>
             <EKDBCard
               ekdb={ekdbStore.ekdb}

@@ -17,7 +17,7 @@ const states = [
   },
 ];
 
-const AccountProfileDetails = (props) => {
+const AccountProfileDetails = props => {
   const [values, setValues] = useState({
     firstName: 'YeHwan',
     lastName: 'Oh',
@@ -27,7 +27,7 @@ const AccountProfileDetails = (props) => {
     country: 'Republic of Korea',
   });
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setValues({
       ...values,
       [event.target.name]: event.target.value,
@@ -109,7 +109,7 @@ const AccountProfileDetails = (props) => {
                 value={values.state}
                 variant="outlined"
               >
-                {states.map((option) => (
+                {states.map(option => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>

@@ -37,7 +37,7 @@ class UKStore {
 
   @action
   removeQuestion(id) {
-    let index = this._questions.findIndex((question) => question.id === id);
+    let index = this._questions.findIndex(question => question.id === id);
     if (index > -1) {
       this._questions.splice(index, 1);
     }
@@ -70,7 +70,7 @@ class UKStore {
         UK_NAME: uk.name,
         UK_DES: uk.description,
         UK_URI: uk.uri,
-        UK_QUESTION: questions.map((question) => question.q),
+        UK_QUESTION: questions.map(question => question.q),
       })
       .then(function (response) {
         console.log(response);

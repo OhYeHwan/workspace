@@ -15,7 +15,7 @@ const NavItem = ({ href, icon: Icon, title, ...rest }) => {
           path: href,
           end: false,
         },
-        location.pathname
+        location.pathname,
       )
     : false;
 

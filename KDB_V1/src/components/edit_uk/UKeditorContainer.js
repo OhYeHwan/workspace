@@ -29,7 +29,7 @@ class UKeditorContainer extends Component {
     this.props.ukStore.handleCreateUK(uk, questions);
   };
 
-  onHandleKeyPress = (event) => {
+  onHandleKeyPress = event => {
     let { question } = this.props.ukStore;
     let Q = {
       id: generateId(5),

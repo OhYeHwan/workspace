@@ -6,7 +6,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Box, TextField, Button } from '@material-ui/core';
 
-const EKDBCreateDialog = (props) => {
+const EKDBCreateDialog = props => {
   const {
     ekdb,
     EKDB,
@@ -60,9 +60,7 @@ const EKDBCreateDialog = (props) => {
           <TextField
             disabled={props.children === '수정하기' ? true : false}
             value={ekdb && ekdb.EKDB_NAME ? ekdb.EKDB_NAME : ''}
-            onChange={(event) =>
-              onSetEKDBProps('EKDB_NAME', event.target.value)
-            }
+            onChange={event => onSetEKDBProps('EKDB_NAME', event.target.value)}
             margin="dense"
             id="Name"
             label="EKDB Name"
@@ -72,7 +70,7 @@ const EKDBCreateDialog = (props) => {
             multiline
             rows={6}
             value={ekdb && ekdb.EKDB_DES ? ekdb.EKDB_DES : ''}
-            onChange={(event) => onSetEKDBProps('EKDB_DES', event.target.value)}
+            onChange={event => onSetEKDBProps('EKDB_DES', event.target.value)}
             margin="dense"
             id="description"
             label="EKDB Description"

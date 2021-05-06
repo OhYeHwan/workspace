@@ -14,7 +14,7 @@ import {
 } from '@material-ui/core';
 import InputIcon from '@material-ui/icons/Input';
 
-const UKeditor = (props) => {
+const UKeditor = props => {
   const {
     uk,
     question,
@@ -27,7 +27,7 @@ const UKeditor = (props) => {
     onHandleKeyPress,
   } = props;
 
-  const handleCreateSubmit = (event) => {
+  const handleCreateSubmit = event => {
     event.preventDefault();
     onHandleCreateUK(uk, questions);
   };
@@ -49,7 +49,7 @@ const UKeditor = (props) => {
               required
               fullWidth
               value={uk && uk.name ? uk.name : ''}
-              onChange={(event) => onSetUKProps('name', event.target.value)}
+              onChange={event => onSetUKProps('name', event.target.value)}
               margin="normal"
               variant="outlined"
             />
@@ -64,7 +64,7 @@ const UKeditor = (props) => {
               multiline
               rows={4}
               value={uk && uk.description ? uk.description : ''}
-              onChange={(event) =>
+              onChange={event =>
                 onSetUKProps('description', event.target.value)
               }
               margin="normal"
@@ -79,7 +79,7 @@ const UKeditor = (props) => {
               style={{ margin: 2 }}
               fullWidth
               value={uk && uk.uri ? uk.uri : ''}
-              onChange={(event) => onSetUKProps('uri', event.target.value)}
+              onChange={event => onSetUKProps('uri', event.target.value)}
               margin="normal"
               variant="outlined"
             />
@@ -92,7 +92,7 @@ const UKeditor = (props) => {
               style={{ margin: 2 }}
               fullWidth
               value={question ? question : ''}
-              onChange={(event) => onChangeQuestion(event.target.value)}
+              onChange={event => onChangeQuestion(event.target.value)}
               margin="normal"
               variant="outlined"
               InputProps={{
@@ -107,7 +107,7 @@ const UKeditor = (props) => {
               }}
             />
             <Box sx={{ boxShadow: 3, p: 1, mt: 2 }}>
-              {questions.map((question) => (
+              {questions.map(question => (
                 <Chip
                   key={question.id}
                   sx={{ p: 1, m: 1 }}

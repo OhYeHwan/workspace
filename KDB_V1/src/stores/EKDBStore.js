@@ -44,14 +44,14 @@ class EKDBStore {
 
   // EKDBListToolbarContainer
   @action
-  handleCreateEKDB = (ekdb) => {
+  handleCreateEKDB = ekdb => {
     console.log('EKDBStore handleCreate 실행');
     axios
       .post('http://192.168.156.18:3009/EKDB', {
         EKDB_NAME: ekdb.EKDB_NAME,
         EKDB_DES: ekdb.EKDB_DES,
       })
-      .then((response) => {
+      .then(response => {
         console.log(response);
         if (response.status === 201) {
           alert('생성완료');
@@ -60,16 +60,16 @@ class EKDBStore {
           alert('잘못된 EKDB_NAME 입니다.');
         }
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   };
 
   // EKDBListContainer
   @action
-  handleDeleteEKDB = (ekdb) => {
+  handleDeleteEKDB = ekdb => {
     console.log('EKDBStore handleDelete 실행');
     axios
       .delete(`http://192.168.156.18:3009/EKDB/${ekdb}`)
-      .then((response) => {
+      .then(response => {
         console.log(response);
         if (response.status === 204) {
           alert('삭제완료');
@@ -78,18 +78,18 @@ class EKDBStore {
           alert('잘못된 EKDB_NAME 입니다.');
         }
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   };
 
   @action
-  handleUpdateEKDB = (ekdb) => {
+  handleUpdateEKDB = ekdb => {
     console.log('EKDBStroe handleUpdate 실행');
     console.log(ekdb);
     axios
       .patch(`http://192.168.156.18:3009/EKDB/${ekdb.EKDB_NAME}`, {
         EKDB_DES: ekdb.EKDB_DES,
       })
-      .then((response) => {
+      .then(response => {
         console.log(response);
         if (response.status === 201) {
           alert('수정완료');
@@ -98,18 +98,18 @@ class EKDBStore {
           alert('입력 오류');
         }
       })
-      .catch((error) => console.log(error));
+      .catch(error => console.log(error));
   };
 
   @action
   getEKDBs() {
     axios
       .get('http://192.168.156.18:3009/EKDB')
-      .then((response) => {
+      .then(response => {
         console.log(response.data);
         this.setEKDBs(response.data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
