@@ -24,7 +24,7 @@ class UpdateDialog extends React.Component {
   };
 
   UpdateSubmit = () => {
-    // this.props.funcInsert();
+    this.props.funcUpdate();
     this.handleClose();
   };
 

@@ -13,9 +13,6 @@ class EkdbStore {
   @observable
   _ekdbs = [];
 
-  @observable
-  _action = '';
-
   // 현재입력되는 정보
   @observable
   _target = {
@@ -23,15 +20,25 @@ class EkdbStore {
     des: '',
   };
 
-  //toJS사용이유
+  // observable이 적용된 변수들은
+  // 몹엑스 스토어가 관리하는 데이터,
+  // 객체 형태로 랩핑이 된다.
+
+  // 실제 자바스크립트 객체로 변경을 원할시에
+  // get ekdbs() {
+  //   return this._ekdbs ? this.ekdbs.slice() : [];
+  // }
+  // [Proxy], [Proxy], [Proxy] ...
+  //
+
+  // 따라서 toJS를 사용해야함
+  // observable 형태로 관리되어지는 객체를
+  // 자바스크립트 객체로 변환해준다.
+  // computed : observable 데이터의 변경이 일어나지 않으면
+  // 최종으로 캐싱하고 있는 데이터를 리턴해준다.
   @computed
   get ekdbs() {
     return toJS(this._ekdbs);
-  }
-
-  @computed
-  get action() {
-    return toJS(this._action);
   }
 
   @computed
@@ -66,6 +73,7 @@ class EkdbStore {
 
   // 현재 입력되어있는 정보 (_target)을
   // Repository의 Restful Api를 이용하여 서버에 전송
+  // id를 줘야한다면 여기서 줘야될듯
   @action
   funcInsert() {
     const data = {
@@ -86,12 +94,17 @@ class EkdbStore {
 
   @action
   funcUpdate() {
-    EkdbRepository.funcUpdate(this._target.name, this._target.des)
+    const data = {
+      EKDB_DES: this._target.des,
+    };
+
+    EkdbRepository.funcUpdate(this._target.name, data)
       .then(
         action(response => {
           console.log(JSON.stringify(response));
           alert('update success!');
           this.funcGet();
+          this.clear();
         }),
       )
       .catch(e => {
@@ -116,6 +129,8 @@ class EkdbStore {
 
   // 이벤트가 발생할 때 마다
   // _target의 정보를 변경
+  // 기존에 가지고 있는 _target 값을 복사한 뒤에
+  // 입력된 값을 변경
   @action
   funcOnChange(key, value) {
     this._target = {
@@ -123,15 +138,6 @@ class EkdbStore {
       [key]: value,
     };
   }
-
-  // @action
-  // funcDoAction(order) {
-  //   this._clear();
-  //   this._action = order;
-  //   if (action === 'search' || action === 'delete' || action === 'update') {
-  //     this._funcGet();
-  //   }
-  // }
 }
 
 export default new EkdbStore();
