@@ -161,3 +161,6 @@ export default new EkdbStore();
 // To Do
 // 1. response.status에 따라서 로직설정
 // 2. api 설계 문서 확인하고 변수 재설정
+// 3. 실험
+// 4. 주석 작성
+// 5. UK 페이지 관련 Mobx 구조 설계
