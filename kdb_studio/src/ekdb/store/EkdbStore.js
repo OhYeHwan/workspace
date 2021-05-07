@@ -75,8 +75,6 @@ class EkdbStore {
         }),
       )
       .catch(e => {
-        console.log(e);
-        console.log(JSON.stringify(e));
         alert(e);
       });
   }
@@ -93,10 +91,13 @@ class EkdbStore {
     EkdbRepository.funcInsert(data)
       .then(
         action(response => {
-          console.log(JSON.stringify(response));
-          alert('insert success!');
-          this.funcGet();
-          this.clear();
+          if (response.status === 201) {
+            alert('생성 성공');
+            this.funcGet();
+            this.clear();
+          } else if (response.status === 400) {
+            alert('잘못된 입력');
+          }
         }),
       )
       .catch(e => alert(e));
@@ -111,12 +112,13 @@ class EkdbStore {
     EkdbRepository.funcUpdate(this._target.name, data)
       .then(
         action(response => {
-          console.log(response); // << 확인해보고 정상적으로 출력되면
-          //response.status에 따라서 로직 설정하기
-          console.log(JSON.stringify(response));
-          alert('update success!');
-          this.funcGet();
-          this.clear();
+          if (response.status === 201) {
+            alert('업데이트 성공!');
+            this.funcGet();
+            this.clear();
+          } else if (response.status === 400) {
+            alert('입력 오류');
+          }
         }),
       )
       .catch(e => {
@@ -129,9 +131,12 @@ class EkdbStore {
     EkdbRepository.funcDel(this._target.name)
       .then(
         action(response => {
-          console.log(JSON.stringify(response));
-          alert('delete success!');
-          this.funcGet();
+          if (response.status === 204) {
+            alert('삭제 성공!');
+            this.funcGet();
+          } else if (response.status === 400) {
+            alert('잘못된 name 입니다');
+          }
         }),
       )
       .catch(e => {
