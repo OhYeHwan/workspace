@@ -1,22 +1,17 @@
-import './App.css';
-import React, { Component } from 'react';
-import Header from './views/header';
-import Sidebar from './views/sidebar';
-import UKviewer from './views/ukviewer';
-import { Grid, Box } from '@material-ui/core';
+import { useRoutes } from 'react-router-dom';
+import { ThemeProvider } from '@material-ui/core';
+import GlobalStyles from './components/GlobalStyles';
+import routes from './routes';
+import theme from './theme';
 
-class App extends Component {
-  
-  render() {
+const App = () => {
+  const routing = useRoutes(routes);
+  return (
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      {routing}
+    </ThemeProvider>
+  );
+};
 
-    return (
-      <Grid container>
-        <Header />
-        <Sidebar/>
-        {/* <UKviewer/> */}
-      </Grid>
-    );
-  } 
-}
-
-export default (App);
+export default App;

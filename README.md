@@ -10,6 +10,14 @@
 
   1. yarn add @material-ui/core
 
+  2. yarn add history @material-ui/core@next
+
+  3. yarn add @emotion/react
+
+  4. yarn add @emotion/styled
+
+  5. yarn add react-feather
+
 - Mobx , mobx-react
 
   1. yarn add mobx mobx-react

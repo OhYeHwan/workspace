@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import EKDBCard from './EKDBCard';
 import { inject, observer } from 'mobx-react';
 import { Grid } from '@material-ui/core';
@@ -8,7 +8,7 @@ import autobind from 'autobind-decorator';
 @inject('ukStore')
 @observer
 @autobind
-class EKDBCardListContainer extends Component {
+class EKDBCardListContainer extends React.Component {
   // 처음 렌더링 시 서버로부터 EKDBs 데이터를 받아온다.
   componentDidMount() {
     this.props.ekdbStore.getEKDBs();
