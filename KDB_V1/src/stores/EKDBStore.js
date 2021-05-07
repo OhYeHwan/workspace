@@ -94,7 +94,7 @@ class EKDBStore {
         if (response.status === 201) {
           alert('수정완료');
           this.getEKDBs();
-        } else if (response.stauts === 400) {
+        } else if (response.status === 400) {
           alert('입력 오류');
         }
       })
