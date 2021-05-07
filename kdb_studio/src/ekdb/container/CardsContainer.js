@@ -14,6 +14,11 @@ class CardsContainer extends React.Component {
   }
 
   @action
+  funcUpdate = () => {
+    this.props.ekdbStore.funcUpdate();
+  };
+
+  @action
   funcDel = name => {
     this.props.ekdbStore.funcDel(name);
   };

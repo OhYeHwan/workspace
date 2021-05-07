@@ -20,7 +20,7 @@ class Cards extends React.Component {
   };
 
   render() {
-    const { ekdb, target, funcOnChange } = this.props;
+    const { ekdb, target, funcOnChange, funcUpdate } = this.props;
 
     return (
       <Card
@@ -82,7 +82,13 @@ class Cards extends React.Component {
                 display: 'flex',
               }}
             >
-              <UpdateDialog>수정하기</UpdateDialog>
+              <UpdateDialog
+                funcUpdate={funcUpdate}
+                funcOnChange={funcOnChange}
+                target={target}
+              >
+                수정하기
+              </UpdateDialog>
               <Button
                 onClick={this.DeleteSubmit}
                 variant="contained"
