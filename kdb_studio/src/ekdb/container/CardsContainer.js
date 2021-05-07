@@ -36,7 +36,13 @@ class CardsContainer extends React.Component {
   };
 
   render() {
-    const { ekdbs, target, action } = this.props.ekdbStore;
+    let { ekdbs, searchEkdb } = this.props.ekdbStore;
+    const { target, action } = this.props.ekdbStore;
+
+    ekdbs = ekdbs.filter(
+      ekdb => ekdb.name.toLowerCase().indexOf(searchEkdb.toLowerCase()) !== -1,
+    );
+
     return ekdbs.map(ekdb => (
       <Grid item key={ekdb.name} lg={4} md={6} xs={12}>
         <Cards

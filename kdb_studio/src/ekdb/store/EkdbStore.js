@@ -20,6 +20,9 @@ class EkdbStore {
     des: '',
   };
 
+  @observable
+  _searchEkdb = '';
+
   // observable이 적용된 변수들은
   // 몹엑스 스토어가 관리하는 데이터,
   // 객체 형태로 랩핑이 된다.
@@ -44,6 +47,11 @@ class EkdbStore {
   @computed
   get target() {
     return toJS(this._target);
+  }
+
+  @computed
+  get searchText() {
+    return this._searchText;
   }
 
   @action
@@ -137,6 +145,12 @@ class EkdbStore {
       ...this._target,
       [key]: value,
     };
+  }
+
+  // searchText를 변경해주는 method
+  @action
+  funcSearchEkdb(searchEkdb) {
+    this._searchEkdb = searchEkdb;
   }
 }
 

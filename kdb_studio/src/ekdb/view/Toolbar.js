@@ -12,7 +12,7 @@ import InsertDialog from './InsertDialog';
 
 class Toolbar extends Component {
   render() {
-    const { funcInsert, funcOnChange, target } = this.props;
+    const { funcInsert, funcOnChange, funcSearchEkdb, target } = this.props;
 
     return (
       <Box>
@@ -45,6 +45,7 @@ class Toolbar extends Component {
                       </InputAdornment>
                     ),
                   }}
+                  onChange={event => funcSearchEkdb(event.target.value)}
                   placeholder="Search EKDB"
                   variant="outlined"
                 />

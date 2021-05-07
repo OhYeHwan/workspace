@@ -18,12 +18,18 @@ class ToolbarContainer extends React.Component {
     this.props.ekdbStore.funcOnChange(id, value);
   };
 
+  @action
+  funcSearchEkdb = searchEkdb => {
+    this.props.ekdbStore.funcSearchEkdb(searchEkdb);
+  };
+
   render() {
     const { action, ekdbs, target } = this.props.ekdbStore;
     return (
       <Toolbar
         funcInsert={this.funcInsert}
         funcOnChange={this.funcOnChange}
+        funcSearchEkdb={this.funcSearchEkdb}
         action={action}
         ekdbs={ekdbs}
         target={target}
