@@ -8,10 +8,12 @@ import {
   SvgIcon,
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
-import InputDialog from './InputDialog';
+import InsertDialog from './InsertDialog';
 
 class Toolbar extends Component {
   render() {
+    const { funcInsert, funcOnChange, target } = this.props;
+
     return (
       <Box>
         <Box
@@ -20,7 +22,13 @@ class Toolbar extends Component {
             justifyContent: 'flex-end',
           }}
         >
-          <InputDialog>EKDB 생성하기</InputDialog>
+          <InsertDialog
+            funcInsert={funcInsert}
+            funcOnChange={funcOnChange}
+            target={target}
+          >
+            EKDB 생성하기
+          </InsertDialog>
         </Box>
         <Box sx={{ mt: 3 }}>
           <Card>

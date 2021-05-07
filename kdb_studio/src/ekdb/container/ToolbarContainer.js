@@ -14,13 +14,6 @@ class ToolbarContainer extends React.Component {
   };
 
   @action
-  funcDoAction = e => {
-    let order = e.target.id;
-    this.props.ekdbStore.funcDoAction(order);
-    e.preventDefault();
-  };
-
-  @action
   funcOnChange = (id, value) => {
     this.props.ekdbStore.funcOnChange(id, value);
   };
@@ -30,7 +23,6 @@ class ToolbarContainer extends React.Component {
     return (
       <Toolbar
         funcInsert={this.funcInsert}
-        funcDoAction={this.funcDoAction}
         funcOnChange={this.funcOnChange}
         action={action}
         ekdbs={ekdbs}

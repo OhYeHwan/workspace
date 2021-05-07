@@ -11,7 +11,7 @@ import {
   Button,
 } from '@material-ui/core';
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
-import InputDialog from './InputDialog';
+import UpdateDialog from './UpdateDialog';
 import React from 'react';
 
 class Cards extends React.Component {
@@ -78,7 +78,7 @@ class Cards extends React.Component {
                 display: 'flex',
               }}
             >
-              <InputDialog>수정하기</InputDialog>
+              <UpdateDialog>수정하기</UpdateDialog>
               <Button>삭제</Button>
             </Grid>
           </Grid>

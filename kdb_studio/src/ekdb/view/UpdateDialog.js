@@ -6,7 +6,7 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { Box, TextField, Button } from '@material-ui/core';
 
-class InputDialog extends React.Component {
+class UpdateDialog extends React.Component {
   state = {
     open: false,
   };
@@ -23,7 +23,13 @@ class InputDialog extends React.Component {
     });
   };
 
+  UpdateSubmit = () => {
+    // this.props.funcInsert();
+    this.handleClose();
+  };
+
   render() {
+    const { funcOnChange, target } = this.props;
     const { open } = this.state;
     return (
       <Box>
@@ -44,8 +50,17 @@ class InputDialog extends React.Component {
           </DialogTitle>
           <DialogContent>
             <DialogContentText>{this.props.children} 입니다.</DialogContentText>
-            <TextField margin="dense" id="Name" label="EKDB Name" fullWidth />
             <TextField
+              value={target ? target.name : ''}
+              onChange={event => funcOnChange('name', event.target.value)}
+              margin="dense"
+              id="Name"
+              label="EKDB Name"
+              fullWidth
+            />
+            <TextField
+              value={target ? target.des : ''}
+              onChange={event => funcOnChange('des', event.target.value)}
               multiline
               rows={6}
               margin="dense"
@@ -55,7 +70,9 @@ class InputDialog extends React.Component {
             />
           </DialogContent>
           <DialogActions>
-            <Button color="primary">{this.props.children}</Button>
+            <Button color="primary" onClick={this.UpdateSubmit}>
+              {this.props.children}
+            </Button>
             <Button onClick={this.handleClose} color="primary">
               취소
             </Button>
@@ -66,4 +83,4 @@ class InputDialog extends React.Component {
   }
 }
 
-export default InputDialog;
+export default UpdateDialog;

@@ -19,7 +19,6 @@ class EkdbStore {
   // 현재입력되는 정보
   @observable
   _target = {
-    id: '',
     name: '',
     des: '',
   };
@@ -42,10 +41,7 @@ class EkdbStore {
 
   @action
   clear() {
-    this._ekdbs = [];
-    this._action = '';
-    this.target = {
-      id: '',
+    this._target = {
       name: '',
       des: '',
     };
@@ -68,14 +64,21 @@ class EkdbStore {
       });
   }
 
+  // 현재 입력되어있는 정보 (_target)을
+  // Repository의 Restful Api를 이용하여 서버에 전송
   @action
   funcInsert() {
-    EkdbRepository.funcInsert(this._target)
+    const data = {
+      EKDB_NAME: this._target.name,
+      EKDB_DES: this._target.des,
+    };
+    EkdbRepository.funcInsert(data)
       .then(
         action(response => {
           console.log(JSON.stringify(response));
           alert('insert success!');
-          this._funcGet();
+          this.funcGet();
+          this.clear();
         }),
       )
       .catch(e => alert(e));
@@ -111,22 +114,24 @@ class EkdbStore {
       });
   }
 
+  // 이벤트가 발생할 때 마다
+  // _target의 정보를 변경
   @action
-  funcOnChange(id, value) {
+  funcOnChange(key, value) {
     this._target = {
       ...this._target,
-      [id]: value,
+      [key]: value,
     };
   }
 
-  @action
-  funcDoAction(order) {
-    this._clear();
-    this._action = order;
-    if (action === 'search' || action === 'delete' || action === 'update') {
-      this._funcGet();
-    }
-  }
+  // @action
+  // funcDoAction(order) {
+  //   this._clear();
+  //   this._action = order;
+  //   if (action === 'search' || action === 'delete' || action === 'update') {
+  //     this._funcGet();
+  //   }
+  // }
 }
 
 export default new EkdbStore();

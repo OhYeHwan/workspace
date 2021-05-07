@@ -3,7 +3,7 @@ import { extendObservable } from 'mobx';
 
 @autobind
 class EkdbModel {
-  constructor(ekdb = {}) {
+  constructor(ekdb) {
     extendObservable(this, ekdb);
   }
 
@@ -19,10 +19,6 @@ class EkdbModel {
       name: ekdb.EKDB_NAME,
       des: ekdb.EKDB_DES,
     });
-  }
-
-  toApiModel() {
-    return this;
   }
 }
 
