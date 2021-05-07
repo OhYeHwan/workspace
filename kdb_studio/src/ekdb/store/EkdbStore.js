@@ -109,6 +109,8 @@ class EkdbStore {
     EkdbRepository.funcUpdate(this._target.name, data)
       .then(
         action(response => {
+          console.log(response); // << 확인해보고 정상적으로 출력되면
+          //response.status에 따라서 로직 설정하기
           console.log(JSON.stringify(response));
           alert('update success!');
           this.funcGet();
@@ -155,3 +157,7 @@ class EkdbStore {
 }
 
 export default new EkdbStore();
+
+// To Do
+// 1. response.status에 따라서 로직설정
+// 2. api 설계 문서 확인하고 변수 재설정
