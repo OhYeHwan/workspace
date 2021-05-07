@@ -39,6 +39,8 @@ class CardsContainer extends React.Component {
     let { ekdbs, searchEkdb } = this.props.ekdbStore;
     const { target, action } = this.props.ekdbStore;
 
+    // ekdbs 배열안에 있는 각각의 원소들에서
+    // name의 값에 searchEkdb 문자가 존재한다면 리턴
     ekdbs = ekdbs.filter(
       ekdb => ekdb.name.toLowerCase().indexOf(searchEkdb.toLowerCase()) !== -1,
     );
