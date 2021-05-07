@@ -14,13 +14,8 @@ class CardsContainer extends React.Component {
   }
 
   @action
-  funcGet = e => {
-    this.props.ekdbStore.funcGet();
-  };
-
-  @action
-  funcDel = e => {
-    this.props.ekdbStore.funcDel();
+  funcDel = name => {
+    this.props.ekdbStore.funcDel(name);
   };
 
   @action
@@ -28,16 +23,9 @@ class CardsContainer extends React.Component {
     this.props.ekdbStore.funcOnChange(id, value);
   };
 
-  @action
-  funcDoAction = e => {
-    let order = e.target.id;
-    this.props.ekdbStore.funcDoAction(order);
-    e.preventDefault();
-  };
-
   render() {
     let { ekdbs, searchEkdb } = this.props.ekdbStore;
-    const { target, action } = this.props.ekdbStore;
+    const { target } = this.props.ekdbStore;
 
     // ekdbs 배열안에 있는 각각의 원소들에서
     // name의 값에 searchEkdb 문자가 존재한다면 리턴
@@ -50,9 +38,6 @@ class CardsContainer extends React.Component {
         <Cards
           ekdb={ekdb}
           target={target}
-          action={action}
-          funcGet={this.funcGet}
-          funcDoAction={this.funcDoAction}
           funcOnChange={this.funcOnChange}
           funcDel={this.funcDel}
         />

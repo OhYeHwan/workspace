@@ -15,8 +15,12 @@ import UpdateDialog from './UpdateDialog';
 import React from 'react';
 
 class Cards extends React.Component {
+  DeleteSubmit = () => {
+    this.props.funcDel(this.props.ekdb.name);
+  };
+
   render() {
-    const { ekdb } = this.props;
+    const { ekdb, target, funcOnChange } = this.props;
 
     return (
       <Card
@@ -79,7 +83,13 @@ class Cards extends React.Component {
               }}
             >
               <UpdateDialog>수정하기</UpdateDialog>
-              <Button>삭제</Button>
+              <Button
+                onClick={this.DeleteSubmit}
+                variant="contained"
+                color="secondary"
+              >
+                삭제
+              </Button>
             </Grid>
           </Grid>
         </Box>
