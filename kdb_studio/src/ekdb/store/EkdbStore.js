@@ -44,16 +44,21 @@ class EkdbStore {
     return toJS(this._ekdbs);
   }
 
+  // _target 접근 함수
+  // 외부에서 target 으로 접근
   @computed
   get target() {
     return toJS(this._target);
   }
 
+  // _searchEkdb 접근함수
   @computed
-  get searchText() {
-    return this._searchText;
+  get searchEkdb() {
+    return this._searchEkdb;
   }
 
+  // _target 초기화 함수
+  // 로직처리 후 Dialog 초기화
   @action
   clear() {
     this._target = {
@@ -62,6 +67,7 @@ class EkdbStore {
     };
   }
 
+  // 서버에서 데이터 가져오는 함수
   @action
   funcGet() {
     EkdbRepository.funcGet()
@@ -79,6 +85,7 @@ class EkdbStore {
       });
   }
 
+  // 서버에 데이터 삽입
   // 현재 입력되어있는 정보 (_target)을
   // Repository의 Restful Api를 이용하여 서버에 전송
   // id를 줘야한다면 여기서 줘야될듯
@@ -103,6 +110,7 @@ class EkdbStore {
       .catch(e => alert(e));
   }
 
+  // 서버에 데이터 업데이트
   @action
   funcUpdate() {
     const data = {
@@ -126,6 +134,7 @@ class EkdbStore {
       });
   }
 
+  // 서버에 데이터 삭제 요청
   @action
   funcDel() {
     EkdbRepository.funcDel(this._target.name)
