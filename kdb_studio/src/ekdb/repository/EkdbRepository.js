@@ -16,21 +16,21 @@ class EkdbRepository {
   funcInsert(data) {
     return axios
       .post('http://192.168.156.18:3009/EKDB', data)
-      .then(response => response.data);
+      .then(response => response);
   }
 
   // 서버에 EKDB 데이터 수정 요청
   funcUpdate(name, data) {
     return axios
       .patch(`http://192.168.156.18:3009/EKDB/${name}`, data)
-      .then(response => response.data);
+      .then(response => response);
   }
 
   // 서버에 EKDB 데이터 삭제 요청
   funcDel(name) {
     return axios
       .delete(`http://192.168.156.18:3009/EKDB/${name}`)
-      .then(response => response.data);
+      .then(response => response);
   }
 }
 

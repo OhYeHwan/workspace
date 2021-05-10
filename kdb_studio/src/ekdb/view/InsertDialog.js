@@ -21,6 +21,8 @@ class InsertDialog extends React.Component {
     this.setState({
       open: false,
     });
+    this.props.funcOnChange('name', '');
+    this.props.funcOnChange('des', '');
   };
 
   InsertSubmit = () => {

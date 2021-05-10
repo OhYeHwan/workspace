@@ -86,6 +86,7 @@ class Cards extends React.Component {
                 funcUpdate={funcUpdate}
                 funcOnChange={funcOnChange}
                 target={target}
+                ekdb={ekdb}
               >
                 수정하기
               </UpdateDialog>

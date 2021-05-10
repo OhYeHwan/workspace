@@ -15,12 +15,16 @@ class UpdateDialog extends React.Component {
     this.setState({
       open: true,
     });
+    this.props.funcOnChange('name', this.props.ekdb.name);
+    this.props.funcOnChange('des', this.props.ekdb.des);
   };
 
   handleClose = () => {
     this.setState({
       open: false,
     });
+    this.props.funcOnChange('name', '');
+    this.props.funcOnChange('des', '');
   };
 
   UpdateSubmit = () => {

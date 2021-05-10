@@ -76,7 +76,7 @@ class EkdbStore {
           console.log(response);
           console.log(JSON.stringify(response));
           this._ekdbs = toJS(response);
-          console.log(this._ekdbs);
+          console.log(toJS(this._ekdbs));
           return this._ekdbs;
         }),
       )
@@ -136,8 +136,8 @@ class EkdbStore {
 
   // 서버에 데이터 삭제 요청
   @action
-  funcDel() {
-    EkdbRepository.funcDel(this._target.name)
+  funcDel(name) {
+    EkdbRepository.funcDel(name)
       .then(
         action(response => {
           if (response.status === 204) {
@@ -149,6 +149,7 @@ class EkdbStore {
         }),
       )
       .catch(e => {
+        console.log(e);
         alert(e);
       });
   }

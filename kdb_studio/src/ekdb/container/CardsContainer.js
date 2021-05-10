@@ -24,8 +24,8 @@ class CardsContainer extends React.Component {
   };
 
   @action
-  funcOnChange = (id, value) => {
-    this.props.ekdbStore.funcOnChange(id, value);
+  funcOnChange = (key, value) => {
+    this.props.ekdbStore.funcOnChange(key, value);
   };
 
   render() {
@@ -45,6 +45,7 @@ class CardsContainer extends React.Component {
           target={target}
           funcOnChange={this.funcOnChange}
           funcDel={this.funcDel}
+          funcUpdate={this.funcUpdate}
         />
       </Grid>
     ));
