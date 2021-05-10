@@ -25,6 +25,7 @@ class EkdbModel {
   // key : value 재설정
   static fromApiModel(ekdb) {
     return new EkdbModel({
+      id: ekdb.DB_ID,
       name: ekdb.EKDB_NAME,
       des: ekdb.EKDB_DES,
     });

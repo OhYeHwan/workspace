@@ -28,7 +28,8 @@ class UpdateDialog extends React.Component {
   };
 
   UpdateSubmit = () => {
-    this.props.funcUpdate();
+    console.log(this.props.ekdb.id);
+    this.props.funcUpdate(this.props.ekdb.id);
     this.handleClose();
   };
 

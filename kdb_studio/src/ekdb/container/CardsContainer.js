@@ -14,13 +14,13 @@ class CardsContainer extends React.Component {
   }
 
   @action
-  funcUpdate = () => {
-    this.props.ekdbStore.funcUpdate();
+  funcUpdate = id => {
+    this.props.ekdbStore.funcUpdate(id);
   };
 
   @action
-  funcDel = name => {
-    this.props.ekdbStore.funcDel(name);
+  funcDel = id => {
+    this.props.ekdbStore.funcDel(id);
   };
 
   @action
@@ -39,7 +39,7 @@ class CardsContainer extends React.Component {
     );
 
     return ekdbs.map(ekdb => (
-      <Grid item key={ekdb.name} lg={4} md={6} xs={12}>
+      <Grid item key={ekdb.id} lg={4} md={6} xs={12}>
         <Cards
           ekdb={ekdb}
           target={target}

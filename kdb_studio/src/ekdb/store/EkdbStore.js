@@ -16,6 +16,7 @@ class EkdbStore {
   // 현재입력되는 정보
   @observable
   _target = {
+    id: null,
     name: '',
     des: '',
   };
@@ -62,6 +63,7 @@ class EkdbStore {
   @action
   clear() {
     this._target = {
+      id: null,
       name: '',
       des: '',
     };
@@ -88,7 +90,6 @@ class EkdbStore {
   // 서버에 데이터 삽입
   // 현재 입력되어있는 정보 (_target)을
   // Repository의 Restful Api를 이용하여 서버에 전송
-  // id를 줘야한다면 여기서 줘야될듯
   @action
   funcInsert() {
     const data = {
@@ -112,12 +113,13 @@ class EkdbStore {
 
   // 서버에 데이터 업데이트
   @action
-  funcUpdate() {
+  funcUpdate(id) {
     const data = {
+      EKDB_NAME: this._target.name,
       EKDB_DES: this._target.des,
     };
 
-    EkdbRepository.funcUpdate(this._target.name, data)
+    EkdbRepository.funcUpdate(id, data)
       .then(
         action(response => {
           if (response.status === 201) {
@@ -136,8 +138,8 @@ class EkdbStore {
 
   // 서버에 데이터 삭제 요청
   @action
-  funcDel(name) {
-    EkdbRepository.funcDel(name)
+  funcDel(id) {
+    EkdbRepository.funcDel(id)
       .then(
         action(response => {
           if (response.status === 204) {
@@ -174,10 +176,3 @@ class EkdbStore {
 }
 
 export default new EkdbStore();
-
-// To Do
-// 1. response.status에 따라서 로직설정
-// 2. api 설계 문서 확인하고 변수 재설정
-// 3. 실험
-// 4. 주석 작성
-// 5. UK 페이지 관련 Mobx 구조 설계

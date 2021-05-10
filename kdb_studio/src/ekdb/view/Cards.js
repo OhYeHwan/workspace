@@ -16,7 +16,7 @@ import React from 'react';
 
 class Cards extends React.Component {
   DeleteSubmit = () => {
-    this.props.funcDel(this.props.ekdb.name);
+    this.props.funcDel(this.props.ekdb.id);
   };
 
   render() {

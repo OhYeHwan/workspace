@@ -20,16 +20,18 @@ class EkdbRepository {
   }
 
   // 서버에 EKDB 데이터 수정 요청
-  funcUpdate(name, data) {
+  funcUpdate(id, data) {
+    console.log('레포지토리 data');
+    console.log(data);
     return axios
-      .patch(`http://192.168.156.18:3009/EKDB/${name}`, data)
+      .patch(`http://192.168.156.18:3009/EKDB/${id}`, data)
       .then(response => response);
   }
 
   // 서버에 EKDB 데이터 삭제 요청
-  funcDel(name) {
+  funcDel(id) {
     return axios
-      .delete(`http://192.168.156.18:3009/EKDB/${name}`)
+      .delete(`http://192.168.156.18:3009/EKDB/${id}`)
       .then(response => response);
   }
 }
