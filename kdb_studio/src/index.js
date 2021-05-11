@@ -5,10 +5,11 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'mobx-react';
 import EkdbStore from './ekdb/store/EkdbStore';
+import UkStore from './uk/store/UkStore';
 
 ReactDOM.render(
   <BrowserRouter>
-    <Provider ekdbStore={EkdbStore}>
+    <Provider ekdbStore={EkdbStore} ukStore={UkStore}>
       <App />
     </Provider>
   </BrowserRouter>,

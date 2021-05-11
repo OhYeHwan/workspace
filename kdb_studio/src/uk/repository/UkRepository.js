@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-class UkRepository {
-  funcGet() {
-    return;
-  }
-}
+class UkRepository {}
+
+export default new UkRepository();

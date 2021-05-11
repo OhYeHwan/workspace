@@ -14,7 +14,6 @@ class UkStore {
   _target = {
     name: '',
     des: '',
-    uri: '',
   };
 
   // 서버에서 받아온 질문 리스트를 담을 배열
@@ -50,7 +49,6 @@ class UkStore {
     this._target = {
       name: '',
       des: '',
-      uri: '',
     };
   }
 
@@ -65,6 +63,27 @@ class UkStore {
   @action
   funcQuestionChange(question) {
     this._question = question;
+  }
+
+  @action
+  funcAddQuestion(question) {
+    this._questions.push(question);
+    this._question = '';
+  }
+
+  @action
+  funcRemoveQuestion(id) {
+    let index = this._questions.findIndex(question => question.id === id);
+    if (index > -1) {
+      this._questions.splice(index, 1);
+    }
+  }
+
+  @action
+  funcKeyPress(event, question) {
+    if (event.key === 'Enter') {
+      this.funcAddQuestion(question);
+    }
   }
 }
 
