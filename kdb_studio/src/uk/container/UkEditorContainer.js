@@ -1,5 +1,5 @@
 import React from 'react';
-import Editor from '../view/Editor';
+import UkEditor from '../view/UkEditor';
 import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
 import generateId from '../../IDGenerator';
@@ -8,18 +8,23 @@ import { action } from 'mobx';
 @inject('ukStore')
 @observer
 @autobind
-class EditorContainer extends React.Component {
+class UkEditorContainer extends React.Component {
   @action
   funcTargetOnChange = (key, value) => {
     this.props.ukStore.funcTargetOnChange(key, value);
   };
 
   @action
+  funcUpdateUk = () => {
+    this.props.ukStore.funcUpdateUk();
+  };
+
+  @action
   funcAddQuestion = () => {
-    let { question } = this.props.ukStore;
+    let { target } = this.props.ukStore;
     let Q = {
       id: generateId(5),
-      q: question,
+      q: target.question,
     };
     this.props.ukStore.funcAddQuestion(Q);
   };
@@ -31,26 +36,20 @@ class EditorContainer extends React.Component {
 
   @action
   funcKeyPress = event => {
-    let { question } = this.props.ukStore;
+    let { target } = this.props.ukStore;
     let Q = {
       id: generateId(5),
-      q: question,
+      q: target.question,
     };
     this.props.ukStore.funcKeyPress(event, Q);
   };
 
-  @action
-  funcQuestionChange = question => {
-    this.props.ukStore.funcQuestionChange(question);
-  };
-
   render() {
-    const { target, question, questions } = this.props.ukStore;
+    const { target } = this.props.ukStore;
     return (
-      <Editor
+      <UkEditor
         target={target}
-        question={question}
-        questions={questions}
+        funcUpdateUk={this.funcUpdateUk}
         funcTargetOnChange={this.funcTargetOnChange}
         funcAddQuestion={this.funcAddQuestion}
         funcRemoveQuestion={this.funcRemoveQuestion}
@@ -61,4 +60,4 @@ class EditorContainer extends React.Component {
   }
 }
 
-export default EditorContainer;
+export default UkEditorContainer;

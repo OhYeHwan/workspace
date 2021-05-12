@@ -1,5 +1,5 @@
 import { Helmet } from 'react-helmet';
-import EditorContainer from '../uk/container/EditorContainer';
+import UkEditorContainer from '../uk/container/UkEditorContainer';
 import ListViewContainer from '../uk/container/ListViewContainer';
 import { Box, Container, Grid } from '@material-ui/core';
 
@@ -17,11 +17,11 @@ const UK = () => (
     >
       <Container maxWidth={false}>
         <Grid container spacing={1}>
-          <Grid item lg={4} md={12} xl={3} xs={12}>
+          <Grid sx={{ boxShadow: '2' }} item xl={2} lg={2} md={12} xs={12}>
             <ListViewContainer />
           </Grid>
-          <Grid item lg={8} md={12} xl={9} xs={12}>
-            <EditorContainer />
+          <Grid sx={{ boxShadow: '2' }} item xl={10} lg={10} md={12} xs={12}>
+            <UkEditorContainer />
           </Grid>
         </Grid>
       </Container>

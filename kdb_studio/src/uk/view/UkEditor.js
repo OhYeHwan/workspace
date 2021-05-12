@@ -7,25 +7,25 @@ import {
   Divider,
   TextField,
   Typography,
-  CardActions,
   Button,
   Chip,
   Box,
   InputAdornment,
 } from '@material-ui/core';
 import InputIcon from '@material-ui/icons/Input';
+import { observer } from 'mobx-react';
 
-class Editor extends React.Component {
+@observer
+class UkEditor extends React.Component {
   render() {
     const {
       target,
-      question,
-      questions,
+      funcUpdateUk,
       funcTargetOnChange,
       funcAddQuestion,
       funcRemoveQuestion,
       funcKeyPress,
-      funcQuestionChange,
+      // funcQuestionChange,
     } = this.props;
     return (
       <Card>
@@ -72,8 +72,10 @@ class Editor extends React.Component {
               fullWidth
               margin="normal"
               variant="outlined"
-              value={question ? question : ''}
-              onChange={event => funcQuestionChange(event.target.value)}
+              value={target.question ? target.question : ''}
+              onChange={event =>
+                funcTargetOnChange('question', event.target.value)
+              }
               InputProps={{
                 onKeyPress: funcKeyPress,
                 endAdornment: (
@@ -86,7 +88,7 @@ class Editor extends React.Component {
               }}
             />
             <Box sx={{ boxShadow: 3, p: 1, mt: 2 }}>
-              {questions.map(question => (
+              {target.questions.map(question => (
                 <Chip
                   key={question.id}
                   sx={{ p: 1, m: 1 }}
@@ -99,14 +101,22 @@ class Editor extends React.Component {
           </CardContent>
         </PerfectScrollbar>
         <Divider />
-        <CardActions>
-          <Button color="primary" fullWidth variant="text">
-            Edit
+        <Box sx={{ textAlign: 'center' }}>
+          <Button variant="outlined" size="large">
+            내용편집
           </Button>
-        </CardActions>
+          <Button
+            color="primary"
+            variant="contained"
+            size="large"
+            onClick={funcUpdateUk}
+          >
+            저장하기
+          </Button>
+        </Box>
       </Card>
     );
   }
 }
 
-export default Editor;
+export default UkEditor;
