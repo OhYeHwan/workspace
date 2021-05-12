@@ -70,8 +70,8 @@ class UkStore {
   }
 
   @action
-  funcRemoveUk() {
-    let index = this._uks.findIndex(uk => uk.id === this._target.id);
+  funcRemoveUk(id) {
+    let index = this._uks.findIndex(uk => uk.id === id);
     if (index > -1) {
       this._uks.splice(index, 1);
     }

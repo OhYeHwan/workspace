@@ -25,6 +25,10 @@ class ListViewContainer extends React.Component {
     this.props.ukStore.funcAddUk(target);
   };
 
+  funcRemoveUk = id => {
+    this.props.ukStore.funcRemoveUk(id);
+  };
+
   render() {
     let { uks } = this.props.ukStore;
     return (
@@ -32,7 +36,11 @@ class ListViewContainer extends React.Component {
         <Box sx={{ float: 'right' }}>
           <UkAddButton funcAddUk={this.funcAddUk} />
         </Box>
-        <ListView uks={uks} funcSelectedUk={this.funcSelectedUk} />
+        <ListView
+          uks={uks}
+          funcSelectedUk={this.funcSelectedUk}
+          funcRemoveUk={this.funcRemoveUk}
+        />
       </>
     );
   }
