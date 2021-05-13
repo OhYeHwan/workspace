@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { experimentalStyled } from '@material-ui/core';
 import EKDBNavbar from './EKDBNavbar';
 import EKDBSidebar from './EKDBSidebar';
@@ -35,14 +35,15 @@ const EKDBLayoutContent = experimentalStyled('div')({
 });
 
 const EKDBLayout = () => {
-  const [isMobileNavOpen, setMobileNavOpen] = useState(false);
+  // const [isMobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
     <EKDBLayoutRoot>
-      <EKDBNavbar onMobileNavOpen={() => setMobileNavOpen(true)} />
+      {/* <EKDBNavbar onMobileNavOpen={() => setMobileNavOpen(true)} /> */}
+      <EKDBNavbar />
       <EKDBSidebar
-        onMobileClose={() => setMobileNavOpen(false)}
-        openMobile={isMobileNavOpen}
+      // onMobileClose={() => setMobileNavOpen(false)}
+      // openMobile={isMobileNavOpen}
       />
       <EKDBLayoutWrapper>
         <EKDBLayoutContainer>

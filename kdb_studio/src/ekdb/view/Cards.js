@@ -13,6 +13,7 @@ import {
 import AccessTimeIcon from '@material-ui/icons/AccessTime';
 import UpdateDialog from './UpdateDialog';
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Cards extends React.Component {
   DeleteSubmit = () => {
@@ -30,32 +31,34 @@ class Cards extends React.Component {
           height: '100%',
         }}
       >
-        <CardActionArea onClick={event => console.log(event)}>
-          <CardContent>
-            <Box
-              sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                pb: 3,
-              }}
-            >
-              <Avatar alt="ekdb" variand="square" />
-            </Box>
-            <Typography
-              align="center"
-              color="textPrimary"
-              gutterBottom
-              variant="h4"
-            >
-              {ekdb.name}
-            </Typography>
-            <Typography align="center" color="textPrimary" variant="body1">
-              {ekdb.des}
-            </Typography>
-          </CardContent>
-          <Box sx={{ flexGrow: 1 }} />
-          <Divider />
-        </CardActionArea>
+        <Link to="/uk">
+          <CardActionArea>
+            <CardContent>
+              <Box
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
+                  pb: 3,
+                }}
+              >
+                <Avatar alt="ekdb" variand="square" />
+              </Box>
+              <Typography
+                align="center"
+                color="textPrimary"
+                gutterBottom
+                variant="h4"
+              >
+                {ekdb.name}
+              </Typography>
+              <Typography align="center" color="textPrimary" variant="body1">
+                {ekdb.des}
+              </Typography>
+            </CardContent>
+            <Box sx={{ flexGrow: 1 }} />
+            <Divider />
+          </CardActionArea>
+        </Link>
         <Box sx={{ p: 2 }}>
           <Grid container spacing={2} sx={{ justifyContent: 'space-between' }}>
             <Grid

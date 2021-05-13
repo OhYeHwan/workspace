@@ -35,3 +35,36 @@ const EKDB = () => (
 );
 
 export default EKDB;
+
+// const EKDB = () => (
+//   <>
+//     <Helmet>
+//       <title>EKDB</title>
+//     </Helmet>
+//     <Box
+//       sx={{
+//         backgroundColor: 'background.default',
+//         height: '100%',
+//         py: 3,
+//       }}
+//     >
+//       <Container maxWidth={false}>
+//         <ToolbarContainer />
+//         <Box sx={{ pt: 3 }}>
+//           <Grid container spacing={3}>
+//             <CardsContainer />
+//           </Grid>
+//         </Box>
+//         <Box
+//           sx={{
+//             display: 'flex',
+//             justifyContent: 'center',
+//             pt: 3,
+//           }}
+//         ></Box>
+//       </Container>
+//     </Box>
+//   </>
+// );
+
+// export default EKDB;

@@ -1,4 +1,5 @@
 import { observable, action, makeObservable, toJS, computed } from 'mobx';
+import UkRepository from '../repository/UkRepository';
 
 class UkStore {
   constructor() {
@@ -100,6 +101,21 @@ class UkStore {
     if (event.key === 'Enter') {
       this.funcAddQuestion(question);
     }
+  }
+
+  // 서버통신
+  @action
+  funcGet(DBid) {
+    UkRepository.funcGet(DBid)
+      .then(
+        action(response => {
+          this._uks = toJS(response);
+          return this._uks;
+        }),
+      )
+      .catch(e => {
+        alert(e);
+      });
   }
 }
 
