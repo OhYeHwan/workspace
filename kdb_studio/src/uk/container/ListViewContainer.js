@@ -10,6 +10,10 @@ import generateId from '../../IDGenerator';
 @observer
 @autobind
 class ListViewContainer extends React.Component {
+  componentDidMount() {
+    this.props.ukStore.funcGet();
+  }
+
   funcSelectedUk = uk => {
     this.props.ukStore.funcSelectedUk(uk);
   };

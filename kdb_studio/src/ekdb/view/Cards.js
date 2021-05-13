@@ -20,6 +20,10 @@ class Cards extends React.Component {
     this.props.funcDel(this.props.ekdb.id);
   };
 
+  funcSetDBid = () => {
+    this.props.funcSetDBid(this.props.ekdb.id);
+  };
+
   render() {
     const { ekdb, target, funcOnChange, funcUpdate } = this.props;
 
@@ -32,7 +36,7 @@ class Cards extends React.Component {
         }}
       >
         <Link to="/uk">
-          <CardActionArea>
+          <CardActionArea onClick={this.funcSetDBid}>
             <CardContent>
               <Box
                 sx={{

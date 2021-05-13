@@ -6,12 +6,18 @@ import { Grid } from '@material-ui/core';
 import { action } from 'mobx';
 
 @inject('ekdbStore')
+@inject('ukStore')
 @observer
 @autobind
 class CardsContainer extends React.Component {
   componentDidMount() {
     this.props.ekdbStore.funcGet();
   }
+
+  @action
+  funcSetDBid = DBid => {
+    this.props.ukStore.funcSetDBid(DBid);
+  };
 
   @action
   funcUpdate = id => {
@@ -43,6 +49,7 @@ class CardsContainer extends React.Component {
         <Cards
           ekdb={ekdb}
           target={target}
+          funcSetDBid={this.funcSetDBid}
           funcOnChange={this.funcOnChange}
           funcDel={this.funcDel}
           funcUpdate={this.funcUpdate}

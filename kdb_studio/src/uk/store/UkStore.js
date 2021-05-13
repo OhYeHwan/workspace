@@ -6,6 +6,14 @@ class UkStore {
     makeObservable(this);
   }
 
+  @observable
+  _DBid = null;
+
+  funcSetDBid(DBid) {
+    console.log(DBid);
+    this._DBid = DBid;
+  }
+
   // 서버에서 받아온 uk 리스트를 담을 배열
   @observable
   _uks = [];
@@ -105,8 +113,8 @@ class UkStore {
 
   // 서버통신
   @action
-  funcGet(DBid) {
-    UkRepository.funcGet(DBid)
+  funcGet() {
+    UkRepository.funcGet(this._DBid)
       .then(
         action(response => {
           this._uks = toJS(response);
