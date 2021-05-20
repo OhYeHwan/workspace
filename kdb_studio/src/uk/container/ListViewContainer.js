@@ -34,13 +34,14 @@ class ListViewContainer extends React.Component {
   };
 
   render() {
-    let { uks } = this.props.ukStore;
+    let { uks, target } = this.props.ukStore;
     return (
       <>
         <Box sx={{ float: 'right' }}>
           <UkAddButton funcAddUk={this.funcAddUk} />
         </Box>
         <ListView
+          target={target}
           uks={uks}
           funcSelectedUk={this.funcSelectedUk}
           funcRemoveUk={this.funcRemoveUk}
