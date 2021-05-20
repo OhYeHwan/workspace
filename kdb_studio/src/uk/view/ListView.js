@@ -14,11 +14,13 @@ class ListView extends React.Component {
   };
 
   render() {
-    const { uks, funcSelectedUk } = this.props;
+    const { uks, target, funcSelectedUk } = this.props;
     return (
       <TreeView
         defaultCollapseIcon={<ExpandMoreIcon />}
         defaultExpandIcon={<ChevronRightIcon />}
+        defaultExpanded={['0']}
+        selected={target.id === null ? ['1'] : [`${target.id}`]}
       >
         <TreeItem nodeId="0" label="UK">
           {Array.isArray(uks) && uks.length ? (
