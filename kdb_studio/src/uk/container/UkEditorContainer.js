@@ -45,9 +45,10 @@ class UkEditorContainer extends React.Component {
   };
 
   render() {
-    const { target } = this.props.ukStore;
+    const { uks, target } = this.props.ukStore;
     return (
       <UkEditor
+        uks={uks}
         target={target}
         funcUpdateUk={this.funcUpdateUk}
         funcTargetOnChange={this.funcTargetOnChange}
