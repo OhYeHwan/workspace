@@ -19,7 +19,6 @@ import { observer } from 'mobx-react';
 class UkEditor extends React.Component {
   render() {
     const {
-      uks,
       target,
       funcUpdateUk,
       funcTargetOnChange,
@@ -43,7 +42,7 @@ class UkEditor extends React.Component {
               style={{ margin: 2 }}
               required
               fullWidth
-              disabled={uks.length === 0 ? true : false}
+              disabled={target.id === null ? true : false}
               value={target && target.name ? target.name : ''}
               onChange={event => funcTargetOnChange('name', event.target.value)}
               margin="normal"
@@ -54,7 +53,7 @@ class UkEditor extends React.Component {
               Description
             </Typography>
             <TextField
-              disabled={uks.length === 0 ? true : false}
+              disabled={target.id === null ? true : false}
               id="Description"
               style={{ margin: 2 }}
               fullWidth
@@ -70,7 +69,7 @@ class UkEditor extends React.Component {
               Question
             </Typography>
             <TextField
-              disabled={uks.length === 0 ? true : false}
+              disabled={target.id === null ? true : false}
               id="Question"
               style={{ margin: 2 }}
               fullWidth
@@ -84,7 +83,9 @@ class UkEditor extends React.Component {
                 onKeyPress: funcKeyPress,
                 endAdornment: (
                   <InputAdornment position="end">
-                    <Button onClick={uks.length === 0 ? null : funcAddQuestion}>
+                    <Button
+                      onClick={target.id === null ? null : funcAddQuestion}
+                    >
                       <InputIcon />
                     </Button>
                   </InputAdornment>
