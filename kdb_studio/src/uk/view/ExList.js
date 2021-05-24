@@ -7,28 +7,28 @@ import { Box } from '@material-ui/core';
 import ExMoreHoriz from './ExMoreHoriz';
 
 class ExList extends React.Component {
-  renderTree = nodes => {
+  renderTree = node => {
     const { funcSelected, funcAddChildUk } = this.props;
     // console.log(nodes);
     return (
       <TreeItem
-        key={nodes.id}
-        nodeId={nodes.id}
+        key={node.id}
+        nodeId={node.id}
         label={
-          <Box key={nodes.id} sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box sx={{ flexGrow: 3 }}>{`${nodes.name}`}</Box>
+          <Box key={node.id} sx={{ display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ flexGrow: 3 }}>{`${node.name}`}</Box>
             <Box>
               <ExMoreHoriz funcAddChildUk={funcAddChildUk} />
             </Box>
           </Box>
         }
-        onClick={() => funcSelected(nodes)}
+        onClick={() => funcSelected(node)}
         //  onLabelClick을 막음으로 해당 UK클릭시 계속해서
         // 토글 되는 것을 방지
         onLabelClick={event => event.preventDefault()}
       >
-        {Array.isArray(nodes.children)
-          ? nodes.children.map(node => this.renderTree(node))
+        {Array.isArray(node.children)
+          ? node.children.map(node => this.renderTree(node))
           : null}
       </TreeItem>
     );
