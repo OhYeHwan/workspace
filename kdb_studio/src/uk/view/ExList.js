@@ -8,7 +8,7 @@ import ExMoreHoriz from './ExMoreHoriz';
 
 class ExList extends React.Component {
   renderTree = node => {
-    const { funcSelected, funcAddChildUk } = this.props;
+    const { funcSelected, funcAddChildUk, funcRemoveUk } = this.props;
     // console.log(nodes);
     return (
       <TreeItem
@@ -18,7 +18,11 @@ class ExList extends React.Component {
           <Box key={node.id} sx={{ display: 'flex', alignItems: 'center' }}>
             <Box sx={{ flexGrow: 3 }}>{`${node.name}`}</Box>
             <Box>
-              <ExMoreHoriz funcAddChildUk={funcAddChildUk} />
+              <ExMoreHoriz
+                nodeId={node.id}
+                funcAddChildUk={funcAddChildUk}
+                funcRemoveUk={funcRemoveUk}
+              />
             </Box>
           </Box>
         }

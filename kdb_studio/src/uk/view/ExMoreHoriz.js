@@ -24,6 +24,11 @@ class ExMoreHoriz extends React.Component {
     this.handleClose();
   };
 
+  funcRemoveUk = () => {
+    this.props.funcRemoveUk(this.props.nodeId);
+    this.handleClose();
+  };
+
   handleClose = () => {
     this.setState({ anchorEl: null });
   };
@@ -52,7 +57,7 @@ class ExMoreHoriz extends React.Component {
             </ListItemIcon>
             <ListItemText primary="UK 추가하기" />
           </MenuItem>
-          <MenuItem onClick={this.handleClose}>
+          <MenuItem onClick={this.funcRemoveUk}>
             <ListItemIcon>
               <RemoveIcon />
             </ListItemIcon>

@@ -25,6 +25,10 @@ class ExListContainer extends React.Component {
     this.props.exStore.funcAddChildUk();
   };
 
+  funcRemoveUk = id => {
+    this.props.exStore.funcRemoveUk(id);
+  };
+
   render() {
     const { data, target } = this.props.exStore;
     return (
@@ -39,6 +43,7 @@ class ExListContainer extends React.Component {
             data={object}
             funcSelected={this.funcSelected}
             funcAddChildUk={this.funcAddChildUk}
+            funcRemoveUk={this.funcRemoveUk}
           />
         ))}
       </>

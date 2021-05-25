@@ -35,10 +35,6 @@ class ExStore {
   _beforeData = [
     {
       parentId: 'root',
-      id: 'root',
-    },
-    {
-      parentId: 'root',
       id: '1',
       name: '1',
     },
@@ -88,9 +84,9 @@ class ExStore {
   funcTreeModel(arrayList, rootId) {
     let rootNodes = [];
 
-    let traverse = function (nodes, item, index) {
+    let traverse = (nodes, item, index) => {
       if (nodes instanceof Array) {
-        return nodes.some(function (node) {
+        return nodes.some(node => {
           if (node.id === item.parentId) {
             node.children = node.children || [];
             return node.children.push(arrayList.splice(index, 1)[0]);
@@ -101,7 +97,7 @@ class ExStore {
     };
 
     while (arrayList.length > 0) {
-      arrayList.some(function (item, index) {
+      arrayList.some((item, index) => {
         if (item.parentId === rootId) {
           return rootNodes.push(arrayList.splice(index, 1)[0]);
         }
@@ -114,9 +110,8 @@ class ExStore {
   @action
   funcGet() {
     this._dupData = [...this._beforeData];
-    this._data = this.funcTreeModel(this._dupData, 'root').filter(
-      i => i.id !== 'root',
-    );
+    this._data = this.funcTreeModel(this._dupData, 'root');
+    console.log(this.data);
   }
 
   @observable
@@ -149,6 +144,44 @@ class ExStore {
     };
     this._beforeData.push(object);
     this.funcGet();
+  }
+
+  @action
+  funcRemoveUk(id) {
+    let removeList = this.dfs(id);
+
+    while (removeList.length !== 0) {
+      let node = removeList.pop();
+      for (let i = 0; i < this._beforeData.length; i++) {
+        if (this._beforeData[i] === node) {
+          this._beforeData.splice(i, 1);
+          i--;
+        }
+      }
+    }
+    this.funcGet();
+  }
+
+  @action
+  dfs(startId) {
+    // 탐색해야할 노드
+    let needVisitStack = [];
+    // 탐색을 마친 노드
+    let visitedQueue = [];
+
+    let foundIndex = this._beforeData.findIndex(i => i.id === startId);
+    needVisitStack.push(this._beforeData[foundIndex]);
+
+    while (needVisitStack.length !== 0) {
+      const node = needVisitStack.pop();
+      if (!visitedQueue.includes(node)) {
+        visitedQueue.push(node);
+        let arrayList = this._beforeData.filter(i => i.parentId === node.id);
+        needVisitStack = [...needVisitStack, ...arrayList];
+      }
+    }
+
+    return visitedQueue;
   }
 }
 export default new ExStore();
