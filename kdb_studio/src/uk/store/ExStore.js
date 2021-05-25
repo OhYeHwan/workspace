@@ -8,8 +8,7 @@ class ExStore {
 
   @observable
   _target = {
-    root: null,
-    parent: null,
+    parentId: null,
     id: null,
     name: '',
     children: [],
@@ -26,7 +25,14 @@ class ExStore {
   }
 
   @observable
-  beforeData = [
+  _dupData = [];
+
+  @computed
+  get dupData() {
+    return toJS(this._dupData);
+  }
+
+  _beforeData = [
     {
       parentId: 'root',
       id: 'root',
@@ -106,12 +112,11 @@ class ExStore {
   }
 
   @action
-  funcBokje() {
-    let dataBokje = [...this.beforeData];
-    console.log(dataBokje);
-    let afterData = this.funcTreeModel(dataBokje, 'root');
-    let data = afterData.filter(i => i.id !== 'root');
-    return data;
+  funcGet() {
+    this._dupData = [...this._beforeData];
+    this._data = this.funcTreeModel(this._dupData, 'root').filter(
+      i => i.id !== 'root',
+    );
   }
 
   @observable
@@ -130,74 +135,20 @@ class ExStore {
       id: tmp,
       name: tmp,
     };
-    this.beforeData.push(object);
-    console.log(toJS(this.beforeData));
+    this._beforeData.push(object);
+    this.funcGet();
   }
 
   @action
   funcAddChildUk() {
-    this.funcChangeTarget();
-  }
-
-  //   @action
-  //   funcFindeIndex() {
-  //     // 선택한 uk의 children을 추가한 target 생성
-  //     this.funcChangeTarget();
-
-  //     // 1 디렉토리에 추가할 경우
-  //     let findindex = this._data.findIndex(i => i.id === this._target.id);
-  //     this._data.splice(findindex, 1, this._target);
-
-  //     // 2 디렉토리에 추가할때
-  //     let rootIndex = this._data.findIndex(i => i.id === this._target.parent);
-  //     let obj = this._data.find(i => i.id === this._target.parent);
-
-  //     let findindex2 = obj.children.findIndex(i => i.id === this._target.id);
-  //     obj.children.splice(findindex2, 1, this._target);
-
-  //     this._data.splice(rootIndex, 1, obj);
-
-  //     // 3 디렉토리에 추가할때
-  //     let rootIndex2 = this._data.findIndex(i => i.id === this._tareget.root);
-  //     let obj2 = this._data.find(i => i.id === this._target.root);
-  //     let obj3 = obj2.children.find(i => i.id === this._target.parent);
-
-  //     let findindex3 = obj2.children.map(i => i.id === this._target.parent);
-  //     let findindex4 = obj3.children.findIndex(i => i.id === this._target.id);
-  //     obj3.children.splice(findindex4, 1, this._target);
-  //     obj2.children.splice(findindex3, 1, obj3);
-  //     this._data.splice(rootIndex2, 1, obj2);
-  //     // 4 디렉토리 추가할때
-  //     // 현재 선택한 아이템의 루트가 일치할때 인덱스 저장
-  //   }
-
-  @action
-  funcChangeTarget() {
     let tmp = generateId(5);
-    let child = {
+    let object = {
+      parentId: this._target.id,
       id: tmp,
       name: tmp,
     };
-
-    const haveChildren = 'children' in this._target;
-
-    if (haveChildren === true) {
-      this._target = {
-        ...this._target,
-        ...this._target.children.push(child),
-      };
-    } else {
-      this._target = {
-        ...this._target,
-        children: [child],
-      };
-    }
-    console.log(toJS(this._target));
-
-    let ff = this._data.findIndex(i => i.id === this._target.id);
-
-    this._data.splice(ff, 1, this._target);
+    this._beforeData.push(object);
+    this.funcGet();
   }
 }
-
 export default new ExStore();

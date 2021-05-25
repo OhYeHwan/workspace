@@ -9,6 +9,10 @@ import autobind from 'autobind-decorator';
 @observer
 @autobind
 class ExListContainer extends React.Component {
+  componentDidMount() {
+    this.props.exStore.funcGet();
+  }
+
   funcAddRootUk = () => {
     this.props.exStore.funcAddRootUk();
   };
