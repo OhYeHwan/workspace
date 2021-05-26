@@ -70,7 +70,7 @@ const UKSidebar = ({ onMobileClose, openMobile }) => {
           variant="persistent"
           PaperProps={{
             sx: {
-              width: 60,
+              width: 70,
               top: 64,
               height: 'calc(100% - 64px)',
             },

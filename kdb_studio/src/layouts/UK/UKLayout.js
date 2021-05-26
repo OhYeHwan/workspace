@@ -31,7 +31,7 @@ const UKLayoutContainer = experimentalStyled('div')({
 const UKLayoutContent = experimentalStyled('div')({
   flex: '1 1 auto',
   height: '100%',
-  overflow: 'auto',
+  overflow: 'hidden',
 });
 
 const UKLayout = () => {

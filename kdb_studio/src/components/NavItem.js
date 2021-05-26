@@ -42,7 +42,7 @@ const NavItem = ({ href, icon: Icon, title, ...rest }) => {
             color: 'primary.main',
           }),
           '& svg': {
-            mr: 1,
+            mr: 0,
           },
         }}
         to={href}

@@ -1,7 +1,6 @@
 import React from 'react';
 import ExList from '../view/ExList';
-import AddIcon from '@material-ui/icons/Add';
-import { IconButton } from '@material-ui/core';
+import { Box } from '@material-ui/core';
 import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
 
@@ -12,10 +11,6 @@ class ExListContainer extends React.Component {
   componentDidMount() {
     this.props.exStore.funcGet();
   }
-
-  funcAddRootUk = () => {
-    this.props.exStore.funcAddRootUk();
-  };
 
   funcSelected = item => {
     this.props.exStore.funcSelected(item);
@@ -32,10 +27,7 @@ class ExListContainer extends React.Component {
   render() {
     const { data, target } = this.props.exStore;
     return (
-      <>
-        <IconButton arial-labe="Add root UK" onClick={this.funcAddRootUk}>
-          <AddIcon />
-        </IconButton>
+      <Box sx={{ height: '95%', overflow: 'auto' }}>
         {data.map(object => (
           <ExList
             target={target}
@@ -46,7 +38,7 @@ class ExListContainer extends React.Component {
             funcRemoveUk={this.funcRemoveUk}
           />
         ))}
-      </>
+      </Box>
     );
   }
 }

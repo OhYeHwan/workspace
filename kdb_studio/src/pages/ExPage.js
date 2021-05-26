@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import ExListContainer from '../uk/container/ExListContainer';
-import { Box, Container, Grid } from '@material-ui/core';
+import ExToolbarContainer from '../uk/container/ExToolbarContainer';
+import { Box } from '@material-ui/core';
 
 const UK = () => (
   <>
@@ -9,26 +10,25 @@ const UK = () => (
     </Helmet>
     <Box
       sx={{
+        display: 'flex',
+        flex: '1 1 auto',
         backgroundColor: 'background.default',
-        minHeight: '100%',
-        py: 3,
+        minHeight: '100%', // 필수
+        height: '100%', // 필수
+        paddingLeft: 5,
+        py: 1,
       }}
     >
-      <Container maxWidth={false}>
-        <Grid container spacing={1}>
-          <Grid sx={{ boxShadow: '2' }} item xl={2} lg={2} md={12} xs={12}>
-            <ExListContainer />
-          </Grid>
-          <Grid
-            sx={{ boxShadow: '2' }}
-            item
-            xl={10}
-            lg={10}
-            md={12}
-            xs={12}
-          ></Grid>
-        </Grid>
-      </Container>
+      <Box
+        sx={{
+          boxShadow: 3,
+          width: 220,
+        }}
+      >
+        <ExToolbarContainer />
+        <ExListContainer />
+      </Box>
+      <Box></Box>
     </Box>
   </>
 );
