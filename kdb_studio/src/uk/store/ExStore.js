@@ -7,10 +7,18 @@ class ExStore {
   }
 
   @observable
+  _mode = false;
+
+  get mode() {
+    return this._mode;
+  }
+
+  @observable
   _target = {
     parentId: null,
     id: null,
     name: '',
+    des: '',
     children: [],
   };
 
@@ -27,123 +35,7 @@ class ExStore {
   @observable
   _dupData = [];
 
-  @computed
-  get dupData() {
-    return toJS(this._dupData);
-  }
-
-  _beforeData = [
-    {
-      parentId: 'root',
-      id: '1',
-      name: '1',
-    },
-    {
-      parentId: '1',
-      id: '2',
-      name: '2',
-    },
-    {
-      parentId: '1',
-      id: '3',
-      name: '3',
-    },
-    {
-      parentId: '1',
-      id: '4',
-      name: '4',
-    },
-    {
-      parentId: '2',
-      id: '5',
-      name: '5',
-    },
-    {
-      parentId: '2',
-      id: '6',
-      name: '6',
-    },
-    {
-      parentId: '1',
-      id: '10',
-      name: '10',
-    },
-    {
-      parentId: 'root',
-      id: '21',
-      name: '21',
-    },
-    {
-      parentId: '21',
-      id: '22',
-      name: '22',
-    },
-    {
-      parentId: 'root',
-      id: '23',
-      name: '23',
-    },
-    {
-      parentId: 'root',
-      id: '24',
-      name: '24',
-    },
-    {
-      parentId: 'root',
-      id: '25',
-      name: '25',
-    },
-    {
-      parentId: 'root',
-      id: '26',
-      name: '26',
-    },
-    {
-      parentId: 'root',
-      id: '27',
-      name: '27',
-    },
-    {
-      parentId: 'root',
-      id: '28',
-      name: '28',
-    },
-    {
-      parentId: 'root',
-      id: '29',
-      name: '29',
-    },
-    {
-      parentId: 'root',
-      id: '30',
-      name: '30',
-    },
-    {
-      parentId: 'root',
-      id: '31',
-      name: '31',
-    },
-    {
-      parentId: 'root',
-      id: '32',
-      name: '32',
-    },
-    {
-      parentId: 'root',
-      id: '33',
-      name: '33',
-    },
-    {
-      parentId: 'root',
-      id: '34',
-      name: '34',
-    },
-    {
-      parentId: 'root',
-      id: '35',
-      name: '35',
-    },
-  ];
+  _beforeData = [];
 
   @action
   funcTreeModel(arrayList, rootId) {
@@ -176,7 +68,6 @@ class ExStore {
   funcGet() {
     this._dupData = [...this._beforeData];
     this._data = this.funcTreeModel(this._dupData, 'root');
-    console.log(this.data);
   }
 
   @observable
@@ -189,25 +80,23 @@ class ExStore {
 
   @action
   funcAddRootUk() {
+    this._mode = true;
     let tmp = generateId(5);
     let object = {
       parentId: 'root',
       id: tmp,
-      name: tmp,
+      name: 'undefinded',
+      des: 'undefinded',
     };
     this._beforeData.push(object);
+    this.funcSelected(object);
     this.funcGet();
   }
 
   @action
-  funcAddChildUk() {
-    let tmp = generateId(5);
-    let object = {
-      parentId: this._target.id,
-      id: tmp,
-      name: tmp,
-    };
-    this._beforeData.push(object);
+  funcAddChildUk(target) {
+    this._beforeData.push(target);
+    this.funcSelected(target);
     this.funcGet();
   }
 
@@ -247,6 +136,22 @@ class ExStore {
     }
 
     return visitedQueue;
+  }
+
+  // UK Editor 관련함수
+  @action
+  funcTargetOnChange(key, value) {
+    this._target = {
+      ...this._target,
+      [key]: value,
+    };
+  }
+
+  @action
+  funcUpdateUk() {
+    let foundUk = this._beforeData.find(uk => uk.id === this._target.id);
+    foundUk.name = this._target.name;
+    foundUk.des = this._target.des;
   }
 }
 export default new ExStore();

@@ -9,18 +9,21 @@ import {
 } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import RemoveIcon from '@material-ui/icons/Remove';
+import { observer } from 'mobx-react';
 
+@observer
 class ExMoreHoriz extends React.Component {
   state = {
     anchorEl: null,
   };
 
   handleClick = event => {
+    event.preventDefault();
     this.setState({ anchorEl: event.currentTarget });
   };
 
   funcAddChildUk = () => {
-    this.props.funcAddChildUk();
+    this.props.funcAddChildUk(this.props.nodeId);
     this.handleClose();
   };
 

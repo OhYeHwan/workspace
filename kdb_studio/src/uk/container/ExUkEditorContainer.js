@@ -1,63 +1,33 @@
 import React from 'react';
-import UkEditor from '../view/UkEditor';
+import ExUkEditor from '../view/ExUkEditor';
 import { inject, observer } from 'mobx-react';
 import autobind from 'autobind-decorator';
-import generateId from '../../IDGenerator';
 import { action } from 'mobx';
 
-@inject('ukStore')
+@inject('exStore')
 @observer
 @autobind
 class ExUkEditorContainer extends React.Component {
   @action
   funcTargetOnChange = (key, value) => {
-    this.props.ukStore.funcTargetOnChange(key, value);
+    this.props.exStore.funcTargetOnChange(key, value);
   };
 
   @action
   funcUpdateUk = () => {
-    this.props.ukStore.funcUpdateUk();
-  };
-
-  @action
-  funcAddQuestion = () => {
-    let { target } = this.props.ukStore;
-    let Q = {
-      id: generateId(5),
-      q: target.question,
-    };
-    this.props.ukStore.funcAddQuestion(Q);
-  };
-
-  @action
-  funcRemoveQuestion = id => {
-    this.props.ukStore.funcRemoveQuestion(id);
-  };
-
-  @action
-  funcKeyPress = event => {
-    let { target } = this.props.ukStore;
-    let Q = {
-      id: generateId(5),
-      q: target.question,
-    };
-    this.props.ukStore.funcKeyPress(event, Q);
+    this.props.exStore.funcUpdateUk();
   };
 
   render() {
-    const { uks, target } = this.props.ukStore;
-    return (
-      <UkEditor
-        uks={uks}
+    const { mode, _beforeDate, target } = this.props.exStore;
+    return mode === true ? (
+      <ExUkEditor
+        _beforeData={_beforeDate}
         target={target}
         funcUpdateUk={this.funcUpdateUk}
         funcTargetOnChange={this.funcTargetOnChange}
-        funcAddQuestion={this.funcAddQuestion}
-        funcRemoveQuestion={this.funcRemoveQuestion}
-        funcKeyPress={this.funcKeyPress}
-        funcQuestionChange={this.funcQuestionChange}
       />
-    );
+    ) : null;
   }
 }
 

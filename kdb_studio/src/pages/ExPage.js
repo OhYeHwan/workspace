@@ -2,6 +2,7 @@ import { Helmet } from 'react-helmet';
 import ExListContainer from '../uk/container/ExListContainer';
 import ExToolbarContainer from '../uk/container/ExToolbarContainer';
 import { Box } from '@material-ui/core';
+import ExUkEditorContainer from '../uk/container/ExUkEditorContainer';
 
 const UK = () => (
   <>
@@ -28,7 +29,9 @@ const UK = () => (
         <ExToolbarContainer />
         <ExListContainer />
       </Box>
-      <Box></Box>
+      <Box sx={{ p: 2, width: '100%' }}>
+        <ExUkEditorContainer />
+      </Box>
     </Box>
   </>
 );
